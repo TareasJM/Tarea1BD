@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Using GET Method to Read Form Data</title>
+	</head>
+<body>
+	<%
+	 	if (request.getParameter("user") == "admin")
+		{
+			%>
+	 			<h2>Bienvenido Admin</h2>
+	 		<%
+		}
+		else if (request.getParameter("user") == "vendedor")
+		{
+			%>
+	 			<h2>Bienvenido Vendedor</h2>
+	 		<%
+		}
+		else
+	 	{
+	 		%>
+	 			<h2>Error, datos incorrectos</h2>
+	 		<%
+		} 
+	 %>	
+	<a href="../Views/index.jsp">Volver al inicio</a>
+</body>
+</html>

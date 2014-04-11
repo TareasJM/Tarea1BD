@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html" %> 
+<html> 
+ <head> 
+	 <meta charset="UTF-8">
+	 <title>Pagina Inicio Pepe's</title> 
+ </head> 
+ <body> 
+ 	<div id="content">
+ 		<div id="optionsMenu">
+			<%
+			 	if (session.getAttribute("userType").equals("administrador"))
+				{
+					%>
+			 			<h2>Bienvenido Admin (insertar menu aquí xd)</h2>
+			 		<%
+				}
+				else if (session.getAttribute("userType").equals("vendedor"))
+				{
+					%>
+			 			<h2>Bienvenido Vendedor</h2>
+			 		<%
+				}
+				else
+			 	{
+			 		%>
+			 			<a href="login.jsp">Iniciar Sesión </a>
+			 		<%
+				} 
+			%>
+ 		</div>
+ 	</div>
+ </body> 
+</html> 

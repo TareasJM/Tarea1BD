@@ -1,0 +1,64 @@
+body
+{
+	background-image:url("../img/fondo2");	
+
+  	background-size: 100%;
+}
+#content
+{
+	width: 50%;
+	text-align: justify;
+	border: 1px solid white;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 150px;
+	padding-bottom: 100px;
+	color: white;
+}
+#content a
+{
+	color: white;
+}
+.codigo
+{
+	margin-left: 31px;
+	margin-top: 70px;
+	display: inline-block;
+}
+
+.nombre
+{	
+	margin-top: 10px;
+	margin-left: 26px;
+
+}
+
+.descripcion
+{
+	margin-top: 10px;
+}
+
+.categoria
+{
+	margin-top: 10px;
+	margin-left: 17px;
+}
+.cantidad
+{
+	margin-top: 10px;
+	margin-left: 21px;
+}
+.precio
+{
+	margin-top: 10px;
+	margin-left: 38px;
+}
+
+.submits
+{
+	display: inline-block;
+	margin-top: 50px;
+	margin-left: -250px;
+	position: absolute;
+	clear: fixed;
+}

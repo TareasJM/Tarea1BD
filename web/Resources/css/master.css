@@ -1,0 +1,41 @@
+body
+{
+	background-image:url("../img/fondo2");	
+  	background-size: 100%;
+}
+#content
+{
+	width: 50%;
+	border: 1px solid white;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 150px;
+	padding-bottom: 100px;
+	color: white;
+}
+
+#content a
+{
+	color: white;
+}
+.usuario
+{
+	margin-left: 13px;
+	margin-top: 70px;
+}
+
+.pass
+{	
+	margin-top: 10px;
+	clear: fixed;	
+}
+
+.submits
+{
+  display: inline-block;
+  margin-top: 50px;
+  margin-left: -240px;
+  position: absolute;
+  clear: fixed;
+}
+
