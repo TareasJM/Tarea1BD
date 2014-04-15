@@ -9,11 +9,13 @@
  	<div id="content">
  		<div id="optionsMenu">
 			<%
-				if (session.getAttribute("userType") == null || session.getAttribute("userType").equals("none"))
+				if (session.getAttribute("userType") == null || session.getAttribute("userType").equals("none") || session.getAttribute("userType").equals(""))
 			 	{
+                                        session.removeAttribute("Error");
 			 		%>
+
 				 		<h1>Bienvenido a Pepe's Works</h1>
-			 			<a href="Views/Session/login.jsp">Iniciar Sesión </a><br>
+			 			<a href="Session/login.jsp">Iniciar Sesión </a><br>
 			 		<%
 				} 
 			 	else if (session.getAttribute("userType").equals("administrador"))
@@ -48,6 +50,11 @@
 			 			</ul>
 			 		<%
 				}
+                                else
+                                {
+                                    session.getAttribute("userType");
+                                }
+
 			%>
  		</div>
  	</div>
