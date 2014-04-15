@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
 <html> 
  <head> 
-	 <meta charset="UTF-8">
 	 <title>Pagina Inicio Pepe's</title> 
 	 <link href="../Resources/css/master.css" rel="stylesheet" type="text/css">
 	 <link href="../Resources/css/index.css" rel="stylesheet" type="text/css">
@@ -14,7 +13,7 @@
 			 	{
 			 		%>
 				 		<h1>Bienvenido a Pepe's Works</h1>
-			 			<a href="Session/login.jsp">Iniciar Sesión </a><br>
+			 			<a href="Views/Session/login.jsp">Iniciar Sesión </a><br>
 			 		<%
 				} 
 			 	else if (session.getAttribute("userType").equals("administrador"))
