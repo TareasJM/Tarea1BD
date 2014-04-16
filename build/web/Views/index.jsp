@@ -20,7 +20,8 @@
 			 		<%
 				} 
 			 	else if (session.getAttribute("userType").equals("administrador"))
-				{
+				{       
+
 					%>
 			 			<h2>Bienvenido Administrador</h2>
 			 			<h3>Controles</h3>
@@ -38,7 +39,8 @@
 			 		<%
 				}
 				else if (session.getAttribute("userType").equals("vendedor"))
-				{
+				{       
+
 					%>
 			 			<h2>Bienvenido Vendedor</h2>
 			 			<h3>Controles</h3>

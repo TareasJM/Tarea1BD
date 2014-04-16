@@ -7,19 +7,16 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.basedatos;
-import modelo.usuario;
 
 /**
  *
  * @author salinas
  */
-@WebServlet(name = "ingresarv", urlPatterns = {"/ingresarv"})
-public class ingresarv extends HttpServlet {
+public class ingresarCompra extends HttpServlet {
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -32,18 +29,18 @@ public class ingresarv extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try 
-        {
-        
-            basedatos user = new basedatos();
-            String rut = request.getParameter("rut").toUpperCase();
-            String pass = request.getParameter("pass").toUpperCase();
-            String nombre = request.getParameter("nombre").toUpperCase();
+        try {
             
-            user.insertV(rut, pass, nombre);
+            basedatos compra = new basedatos();
+            String producto = request.getParameter("producto").toUpperCase();
+            String cantidad = request.getParameter("cantidad").toUpperCase();
+            String precio = request.getParameter("precio").toUpperCase();
+            
+            compra.insertCompra(producto, Integer.parseInt(cantidad), Integer.parseInt(precio));
             response.sendRedirect("Views/index.jsp");
             
-        } finally {            
+        } finally 
+        {            
             out.close();
         }
     }

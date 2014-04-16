@@ -12,6 +12,10 @@
         <servlet-name>showv</servlet-name>
         <servlet-class>controller.showv</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ingresarCompra</servlet-name>
+        <servlet-class>controller.ingresarCompra</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
         <url-pattern>/insertVendedor</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>showv</servlet-name>
         <url-pattern>/showv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ingresarCompra</servlet-name>
+        <url-pattern>/ingresarCompra</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
