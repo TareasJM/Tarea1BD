@@ -36,6 +36,7 @@
 							<li> <a href="../Controllers/Session/logout.jsp">Cerrar Sesión </a> </li>
 
 			 			</ul>
+          	        
 			 		<%
 				}
 				else if (session.getAttribute("userType").equals("vendedor"))
@@ -59,19 +60,7 @@
                                 }
 
 			%>
-                        <%
-                        usuario pro=new usuario();
-                        for(usuario temp: pro.mostrar()){
-                    %>
-                    <table border="1">
-                        <tr>
-                            <td align="left"><%= temp.getRut()%></td>
-                            <td align="left"><%= temp.getNombre()%></td>
-                            <td align="left"><%= temp.getPass()%></td>
-                        </tr>
-                    </table>
-                    <%}%>
- 		</div>
+                      
  	</div>
  </body> 
 </html> 

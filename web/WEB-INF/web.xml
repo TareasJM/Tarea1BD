@@ -16,6 +16,10 @@
         <servlet-name>ingresarCompra</servlet-name>
         <servlet-class>controller.ingresarCompra</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addProducto</servlet-name>
+        <servlet-class>controller.addProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
         <url-pattern>/insertVendedor</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ingresarCompra</servlet-name>
         <url-pattern>/ingresarCompra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addProducto</servlet-name>
+        <url-pattern>/addProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

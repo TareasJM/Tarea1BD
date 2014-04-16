@@ -5,8 +5,9 @@
 	</head>
 	<body>
 		<div id="content">
-			<form action="../../Controllers/Admin/agregarProductos.jsp" method="POST">
-				Código: <input type="text" class = "codigo" name="codigo" placeholder="Código">
+                        
+			<form action="../../addProducto" method="POST">
+				Código: <input type="text" class = "codigo" name="id" placeholder="Código">
 				<br />
 				Nombre: <input type="text" class = "nombre" name = "nombre" placeholder="Nombre" />
 				<br />
