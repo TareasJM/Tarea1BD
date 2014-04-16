@@ -1,3 +1,4 @@
+<%@page import="modelo.usuario"%>
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
 <html> 
  <head> 
@@ -56,6 +57,18 @@
                                 }
 
 			%>
+                        <%
+                        usuario pro=new usuario();
+                        for(usuario temp: pro.mostrar()){
+                    %>
+                    <table border="1">
+                        <tr>
+                            <td align="left"><%= temp.getRut()%></td>
+                            <td align="left"><%= temp.getNombre()%></td>
+                            <td align="left"><%= temp.getPass()%></td>
+                        </tr>
+                    </table>
+                    <%}%>
  		</div>
  	</div>
  </body> 
