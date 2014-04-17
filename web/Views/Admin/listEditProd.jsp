@@ -11,27 +11,20 @@
                         <br>
                         <input href ="editarProducto.jsp" style ="width:125px; margin-top:0px; margin-bottom:10px" type="text" class = "buscar" name="buscar" placeholder="Buscar Producto">
                         </br>
-                        <a href ="listEditProd.jsp" class ="tres">Editar Productos</a>
-                        </br>
                         <a href ="agregarProductos.jsp" class ="cinco">Agregar Productos</a>
                         </br>
                         <a href ="../index.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form>
                     <table width="90%" class="tabla2" border="1"> 
                             <tr>
-                                
-                                <td style="width:250px; text-align:top;"><p class ="t1">Codigo</p></td> 
-                                <td style="width:250px; text-align:top;" ><p class ="t1">Nombre</p></td> 
-                                <td style="width:250px; text-align:top;"><p class ="t1">Cantidad</p></td>
+                                <td style="width:250px; text-align:top-center;" ><p class ="t1">Nombre</p></td> 
                             </tr>
                                 <%
                                     producto prod =new producto();
                                     for(producto temp: prod.showProducto()){
                                 %>
                             <tr>
-                                <td ><p class="uno"><%= temp.getId_producto()%></p></td> 
-                                <td ><p class="uno"><%= temp.getNombre()%></p></td> 
-                                <td ><p class="uno"><%= temp.getStock()%></p></td>
+                                <td ><a href ="editarProducto.jsp" name="nombre" class="list"><p text-align="center"><%= temp.getNombre()%></p></a></td> 
                             </tr>    
                                 
                                <%}%>

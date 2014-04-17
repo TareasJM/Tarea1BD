@@ -6,14 +6,16 @@
 	</head>
 	<body>
 		<div id="content">
-                    <form with =" 10%" class="tabla1" border="1">
+                    <form action ="editarProducto.jsp" with =" 10%" class="tabla1" border="1">
                         <p class="dos">Buscar</p>
                         <br>
-                        <input style ="width:125px; margin-top:0px; margin-bottom:10px" type="text" class = "buscar" name="buscar" placeholder="Buscar Producto">
+                        <input href ="editarProducto.jsp" style ="width:125px; margin-top:0px; margin-bottom:10px" type="text" class = "buscar" name="buscar" placeholder="Buscar Producto">
                         </br>
-                        <a href ="#" class ="tres">Editar Productos</a>
+                        <a href ="listEditProd.jsp" class ="tres">Editar Productos</a>
                         </br>
-                        <a href ="Views/wellcome.jsp" sytle type ="text/css" class ="cuatro">Volver</a>//arreglar esto
+                        <a href ="agregarProductos.jsp" class ="cinco">Agregar Productos</a>
+                        </br>
+                        <a href ="../index.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form>
                     <table width="90%" class="tabla2" border="1"> 
                             <tr>

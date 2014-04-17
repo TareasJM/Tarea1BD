@@ -72,6 +72,40 @@ td
     text-decoration: none; 
     color:white;
 }
+.cinco
+{
+    margin-left: 5px;
+    margin-top: 5px;
+    position: absolute;
+    text-decoration: none; 
+    color:white;
+}
+
+.cinco:hover
+{
+    font-size: 15px;
+    
+}
+.cinco:visited
+{
+    font-size: 15px;
+}
+.list:hover
+{
+    font-size: 15px;
+    
+}
+.list:visited
+{
+    font-size: 15px;
+}
+.list
+{
+    text-align: center;
+    text-decoration: none;
+    color:white;
+}
+
 .submits
 {
 	display: inline-block;

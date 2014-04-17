@@ -138,6 +138,8 @@ public class basedatos
         }
     }//addProducto
      
+
+     
     public Vector<producto> showProducto()
     {
         Vector<producto> vecPro=new Vector<producto>();
@@ -148,7 +150,7 @@ public class basedatos
             pr=con.prepareStatement(sql);
             rs=pr.executeQuery();
             while(rs.next()){
-                producto pro=new producto();
+                producto pro = new producto();
                 pro.setId_producto(rs.getInt("codigo"));
                 pro.setNombre(rs.getString("nombre"));
                 pro.setStock(rs.getInt("cantidad"));

@@ -20,6 +20,18 @@
         <servlet-name>addProducto</servlet-name>
         <servlet-class>controller.addProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editarProducto</servlet-name>
+        <servlet-class>controller.editarProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editProducto</servlet-name>
+        <servlet-class>controller.editProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editProductos</servlet-name>
+        <servlet-class>controller.editProductos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
         <url-pattern>/insertVendedor</url-pattern>
@@ -39,6 +51,18 @@
     <servlet-mapping>
         <servlet-name>addProducto</servlet-name>
         <url-pattern>/addProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarProducto</servlet-name>
+        <url-pattern>/editarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editProducto</servlet-name>
+        <url-pattern>/editProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editProductos</servlet-name>
+        <url-pattern>/editProductos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

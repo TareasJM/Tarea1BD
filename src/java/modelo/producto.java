@@ -5,11 +5,15 @@
 
 package modelo;
 
+import controller.ServiciosBD;
+import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +27,22 @@ public class producto
     private String descripcion;
     private String categoria;
     private String nombre;
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public int getId_producto() {
         return id_producto;
@@ -38,6 +58,16 @@ public class producto
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
     public int getStock() {
@@ -61,7 +91,7 @@ public class producto
     public Vector<producto> showProducto()
     {
         Vector<producto> vecPro=new Vector<producto>();
-        String sql="SELECT * FROM productos";
+        String sql="SELECT * FROM productos order by id";
         try
         {
             Class.forName(classfor);
@@ -95,6 +125,61 @@ public class producto
         }
         return vecPro;
     }//mostrarProductos
+    
+    
+   public Vector<producto> editProducto()
+    {
+        Vector<producto> vecPro=new Vector<producto>();
+        String sql="SELECT * FROM productos order by id";
+        try
+        {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            while(rs.next())
+            {
+                producto pro =new producto();
+                pro.setId_producto(rs.getInt("id"));
+                pro.setNombre(rs.getString("nombre"));
+                pro.setStock(rs.getInt("stock"));//nombre en oracle
+                pro.setCategoria(rs.getString("categoria"));
+                pro.setDescripcion(rs.getString("descripcion"));
+                pro.setPrecio(rs.getInt("precio"));
+                vecPro.add(pro);
+            }
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }finally
+        {
+            try
+            {
+                rs.close();
+                pr.close();
+                con.close();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+        return vecPro;
+    }
+   
+    public static void modProducto(String id, String stock, String descripcion,
+                            String categoria, String precio, String nombre) 
+    {
+        String sql="Update productos SET stock ='" + stock + "'," 
+               + " descripcion ='" + descripcion + "' , "+ "precio ='" +
+               precio+ "' , " + "categoria ='" + categoria +"' ,"
+               + "nombre = '"+ nombre +"',"+"where id ='"+ id +"'";
+        ServiciosBD.ejecutarUpdate(sql);
+        JOptionPane.showMessageDialog(null, "Producto Actualizado");
+
+    }   
+    
    
 
 }//producto
