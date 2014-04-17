@@ -1,11 +1,13 @@
 <%@page import="modelo.producto"%>
-<%  if(request.getParameter( "buscar" ).toUpperCase()!= null)
+<%
+String name = "", nombre2 = "";
+if(request.getParameter( "buscar" ).toUpperCase()!= null)
 {
-    String name = request.getParameter( "buscar" ).toUpperCase();
+    name = request.getParameter( "buscar" ).toUpperCase();
 }
 else
 {
-    String nombre2 = request.getParameter( "nombre" ).toUpperCase();
+    nombre2 = request.getParameter( "nombre" ).toUpperCase();
 }%>
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
 <html>
