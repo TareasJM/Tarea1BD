@@ -32,6 +32,10 @@
         <servlet-name>editProductos</servlet-name>
         <servlet-class>controller.editProductos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarProducto</servlet-name>
+        <servlet-class>controller.eliminarProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
         <url-pattern>/insertVendedor</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>editProductos</servlet-name>
         <url-pattern>/editProductos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarProducto</servlet-name>
+        <url-pattern>/eliminarProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -15,16 +15,16 @@
                         </br>
                         <a href ="../index.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form>
-                    <table width="90%" class="tabla2" border="1"> 
+                    <table width="50%" class="tabla3" border="1"> 
                             <tr>
-                                <td style="width:250px; text-align:top-center;" ><p class ="t1">Nombre</p></td> 
+                                <td style="width:250px; text-align:top-center;" ><h2 class ="t1">Nombre</h2></td> 
                             </tr>
                                 <%
                                     producto prod =new producto();
                                     for(producto temp: prod.showProducto()){
                                 %>
                             <tr>
-                                <td ><a href ="editarProducto.jsp" name="nombre" class="list"><p text-align="center"><%= temp.getNombre()%></p></a></td> 
+                                <td ><a href ="editarProducto.jsp"  class="list"><p text-align="center" class ="uno" name="nombre"><%= temp.getNombre()%></p></a></td> 
                             </tr>    
                                 
                                <%}%>

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import controller.ServiciosBD;
 import java.sql.*;
 import java.util.*;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
+import modelo.basedatos;
 import modelo.producto;
 
 /**
@@ -29,16 +31,20 @@ public class editProductos extends HttpServlet {
         try 
         {
           
-            producto prod = new producto();
+            HttpSession sesion=request.getSession();
+            basedatos pro=new basedatos();
+            String codigo = String.valueOf(sesion.getAttribute("id"));
+            int ide =Integer.parseInt(codigo);
+            pro.deleteProducto(ide);
             String id = request.getParameter("id").toUpperCase();
             String cantidad = request.getParameter("cantidad").toUpperCase();
             String descripcion = request.getParameter("descripcion").toUpperCase();
             String categoria = request.getParameter("categoria").toUpperCase();
             String precio = request.getParameter("precio").toUpperCase();
-            String nombre = request.getParameter("nombre").toUpperCase();
-                      
-            producto.modProducto(id, cantidad,
-            descripcion, categoria, precio,nombre);
+            String nombre = request.getParameter("nombre").toUpperCase();           
+            pro.addProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
+            descripcion, categoria, Integer.parseInt(precio),nombre);
+            response.sendRedirect("Views/index.jsp");
             response.sendRedirect("index.jsp");
             
         } finally {            

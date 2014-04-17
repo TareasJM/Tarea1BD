@@ -13,7 +13,13 @@ body
 .tabla2
 {
   border-color: white;  
-  float:right;  
+  float:right;
+  
+}
+.tabla3
+{
+  border-color: white;  
+  margin-left:360px; 
 }
 .clearfix 
 { 	
@@ -22,6 +28,7 @@ body
 .t1
 {
     text-align: center;
+   
 }
 td
 {
@@ -31,6 +38,8 @@ td
 .uno
 {   
     text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
     
 }
 .dos

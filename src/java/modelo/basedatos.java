@@ -170,5 +170,27 @@ public class basedatos
         return vecPro;
     }//mostrarProductos
         
-    
+     public void deleteProducto(int id)
+      {
+       String sql="DELETE FROM productos WHERE id=? ";
+        try{
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, id);
+           pr.executeUpdate();
+        }
+        catch(Exception ex)
+        {}
+        finally
+        {
+            try
+            {
+                pr.close();
+                con.close();
+            }
+            catch(Exception ex)
+            {}
+        }
+    }//elimiar producto
 }//basedatos

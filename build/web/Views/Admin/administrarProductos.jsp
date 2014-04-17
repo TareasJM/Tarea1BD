@@ -20,9 +20,9 @@
                     <table width="90%" class="tabla2" border="1"> 
                             <tr>
                                 
-                                <td style="width:250px; text-align:top;"><p class ="t1">Codigo</p></td> 
-                                <td style="width:250px; text-align:top;" ><p class ="t1">Nombre</p></td> 
-                                <td style="width:250px; text-align:top;"><p class ="t1">Cantidad</p></td>
+                                <td style="width:250px; text-align:top;"><h2 class ="t1">Código</h2></td> 
+                                <td style="width:250px; text-align:top;" ><h2 class ="t1">Nombre</h2></td> 
+                                <td style="width:250px; text-align:top;"><h2 class ="t1">Cantidad</h2></td>
                             </tr>
                                 <%
                                     producto prod =new producto();
