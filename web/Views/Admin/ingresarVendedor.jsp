@@ -5,10 +5,10 @@
 	<head>
 		<link href="../../Resources/css/vendedor.css" rel="stylesheet" type="text/css">
 	</head>
-	<body>
-		<div id="content">
+	<body >
+		<div style="text-align:center;" id="content">
 			<form action="../../ingresarv" method="post">
-				Rut: <input type="text" class = "rut" name="rut" placeholder="Rut">
+				Rut: <input  type="text" class = "rut" name="rut" placeholder="Rut">
 				<br />
 				Password: <input type="password" class = "pass" name="pass" placeholder="Password" />
 				<br />

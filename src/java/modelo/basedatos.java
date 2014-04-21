@@ -140,22 +140,22 @@ public class basedatos
     }//addProducto
      
 
-     
-    public Vector<producto> showProducto()
+ 
+    
+    public Vector<cliente> showCliente()
     {
-        Vector<producto> vecPro=new Vector<producto>();
-        String sql="SELECT * FROM productos";
+        Vector<cliente> vecPro=new Vector<cliente>();
+        String sql="SELECT * FROM clientes order by rut";
         try{
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario,clave);
             pr=con.prepareStatement(sql);
             rs=pr.executeQuery();
             while(rs.next()){
-                producto pro = new producto();
-                pro.setId_producto(rs.getInt("codigo"));
-                pro.setNombre(rs.getString("nombre"));
-                pro.setStock(rs.getInt("cantidad"));
-                vecPro.add(pro);
+                cliente user = new cliente();
+                user.setRut(rs.getInt("rut"));
+                user.setNombre(rs.getString("nombre"));
+                vecPro.add(user);
             }
         }catch(Exception ex){
             ex.printStackTrace();
@@ -193,5 +193,28 @@ public class basedatos
             catch(Exception ex)
             {}
         }
-    }//elimiar producto
+    }
+     
+    public void deleteAllProductos()
+      {
+       String sql="TRUNCATE TABLE productos"; //elimina todos los elementos de la tabla
+        try{
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            pr.executeUpdate();
+        }
+        catch(Exception ex)
+        {}
+        finally
+        {
+            try
+            {
+                pr.close();
+                con.close();
+            }
+            catch(Exception ex)
+            {}
+        }
+    } //elimiar producto
 }//basedatos

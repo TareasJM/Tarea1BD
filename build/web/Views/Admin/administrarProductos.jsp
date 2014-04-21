@@ -15,6 +15,8 @@
                         </br>
                         <a href ="agregarProductos.jsp" class ="cinco">Agregar Productos</a>
                         </br>
+                        <a href ="../../deleteAllProductos" class ="seis">Delete Productos</a>
+                        </br>
                         <a href ="../index.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form>
                     <table width="89%" class="tabla2" border="1"> 

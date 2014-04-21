@@ -77,7 +77,7 @@ td
 .cuatro
 {
     margin-left: 35px;
-    margin-top: 10px;
+    margin-top: 12px;
     position: absolute;
     text-decoration: none; 
     color:white;
@@ -97,6 +97,24 @@ td
     
 }
 .cinco:visited
+{
+    font-size: 15px;
+}
+.seis
+{
+    margin-left: 8px;
+    margin-top: 10px;
+    position: absolute;
+    text-decoration: none; 
+    color:white;
+}
+
+.seis:hover
+{
+    font-size: 15px;
+    
+}
+.seis:visited
 {
     font-size: 15px;
 }

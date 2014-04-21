@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div id="content">
-			<form action="../../ingresarCompra" method="post">
+			<form style="text-align:center;"action="../../ingresarCompra" method="post">
 				Producto: <input type="text" class = "producto" name="producto" placeholder="Producto">
 				<br />
 				Cantidad: <input type="text" class = "cantidad" name="cantidad" placeholder="Cantidad" />

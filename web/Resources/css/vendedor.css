@@ -23,6 +23,7 @@ body
 {
 	margin-left: 57px;
 	margin-top: 70px;
+        margin-right: 3px;
 	display: inline-block;
 }
 
@@ -30,6 +31,7 @@ body
 {	
 	margin-top: 10px;
 	margin-left: 19px;
+        margin-right: 3px;
 
 }
 
@@ -42,13 +44,14 @@ body
 {
 	margin-top: 10px;
 	margin-left: 28px;
+        margin-right: 7px;
 }
 
 .submits
 {
 	display: inline-block;
 	margin-top: 50px;
-	margin-left: -250px;
+	margin-left: -170px;
 	position: absolute;
 	clear: fixed;
 }

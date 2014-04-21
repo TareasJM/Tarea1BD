@@ -36,6 +36,10 @@
         <servlet-name>eliminarProducto</servlet-name>
         <servlet-class>controller.eliminarProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteAllProductos</servlet-name>
+        <servlet-class>controller.deleteAllProductos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
         <url-pattern>/insertVendedor</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>eliminarProducto</servlet-name>
         <url-pattern>/eliminarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteAllProductos</servlet-name>
+        <url-pattern>/deleteAllProductos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -4,7 +4,7 @@
 		<link href="../../Resources/css/master.css" rel="stylesheet" type="text/css">
 		<link href="../../Resources/css/login.css" rel="stylesheet" type="text/css">
 	</head>
-	<body>
+	<body style="text-align:center;">
 		<div id="content">
 			<%
 				if (session.getAttribute("Error") != null) 

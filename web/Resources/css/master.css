@@ -22,6 +22,7 @@ body
 {
 	margin-left: 13px;
 	margin-top: 70px;
+        margin-right: -2px;
 }
 
 .pass
@@ -29,7 +30,19 @@ body
 	margin-top: 10px;
 	clear: fixed;	
 }
-
+a
+{
+    list-style: none;
+    text-decoration: none;
+}
+a:hover
+{
+    font-size: 20px;
+}
+a:visited
+{
+    font-size: 20px;
+}
 .submits
 {
   display: inline-block;
