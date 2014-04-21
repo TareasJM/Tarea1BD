@@ -23,14 +23,16 @@ body
 {
 	margin-left: 31px;
 	margin-top: 70px;
-	display: inline-block;
+        background:darkgray;
+        border-color: darkgray;
 }
 
 .nombre
 {	
 	margin-top: 10px;
 	margin-left: 26px;
-
+        background: darkgray;
+        border-color:darkgray;
 }
 
 .descripcion
@@ -47,11 +49,14 @@ body
 {
 	margin-top: 10px;
 	margin-left: 21px;
+        background: darkgray;
+        border-color: darkgray;
 }
 .precio
 {
 	margin-top: 10px;
-	margin-left: 38px;
+	margin-left: 37px;
+        
 }
 .tabla1
 {   

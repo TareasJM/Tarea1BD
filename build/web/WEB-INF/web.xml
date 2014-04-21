@@ -48,6 +48,10 @@
         <servlet-name>ingresarUsuario</servlet-name>
         <servlet-class>controller.ingresarUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ingresarCliente</servlet-name>
+        <servlet-class>controller.ingresarCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
         <url-pattern>/insertVendedor</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>ingresarUsuario</servlet-name>
         <url-pattern>/ingresarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ingresarCliente</servlet-name>
+        <url-pattern>/ingresarCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

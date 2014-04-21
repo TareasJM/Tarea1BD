@@ -20,7 +20,7 @@
 
 				 		<h1 style="text-align:center; ">Bienvenido a Pepe's Works</h1>
 			 			<a  href="Session/login.jsp"><p style="text-align:center;">Iniciar Sesión </p></a><br>
-                                                <a  href="Session/ingresarUsuario.jsp"><p style="text-align:center;">Ingresar Usuario</p></a><br>
+                                                
 			 		<%
 				} 
                                                           
@@ -39,8 +39,10 @@
                                                             <li> <a href="Admin/ingresarVenta.jsp"> Ingresar Venta </a> </li>
                                                             <li> <a href="Admin/listClientes.jsp"> Ver Ventas a Cliente </a> </li>
                                                             <li> <a href="Admin/agregarProductos.jsp"> Agregar Productos </a> </li>
+                                                            <li><a  href="Session/ingresarUsuario.jsp">Ingresar Usuario</a></li>
                                                             <li> <a href="../Controllers/Session/logout.jsp">Cerrar Sesión </a> </li>
-
+                                                            
+                                                            
                                                     </ul>
 
                                             <%

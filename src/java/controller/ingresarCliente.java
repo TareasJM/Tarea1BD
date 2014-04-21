@@ -10,42 +10,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
-import java.util.*;
-import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 import modelo.basedatos;
-import modelo.producto;
 
 /**
  *
  * @author salinas
  */
-public class editProductos extends HttpServlet {
+public class ingresarCliente extends HttpServlet {
 
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
-        try 
-        {
+        try {
             
-          
-            
-            basedatos pro=new basedatos();
-            String id = request.getParameter("id").toUpperCase();
-            pro.deleteProducto(Integer.parseInt(id));          
-            String cantidad = request.getParameter("cantidad").toUpperCase();  
-            String descripcion = request.getParameter("descripcion").toUpperCase();
-            String categoria = request.getParameter("categoria").toUpperCase();
-            String precio = request.getParameter("precio").toUpperCase();
-            String nombre = request.getParameter("nombre").toUpperCase();        
-            pro.addProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
-            descripcion, categoria, Integer.parseInt(precio),nombre);
+            basedatos cliente = new basedatos();
+            String rut = request.getParameter("rut").toUpperCase();
+            String nombre = request.getParameter("nombre").toUpperCase();
+            cliente.addCliente(rut,nombre);
             JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
             response.sendRedirect("Views/index.jsp");
-
             
         } finally {            
             out.close();

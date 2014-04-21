@@ -216,6 +216,38 @@ public class basedatos
     }//addUser
  
     
+    public void addCliente(String rut, String nombre)
+    {
+       String sql="Insert into clientes values(?,?)";//nombre de la table
+     
+        try
+        {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setString(1, rut);
+            pr.setString(2, nombre);   
+            pr.executeUpdate();
+        }
+        catch(Exception ev)
+        {
+            sql="update clientes set nombre =? where rut=?";
+            try
+            {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setString(1, nombre);
+            pr.setString(2, rut);
+            pr.executeUpdate();
+            
+            }
+            catch(Exception e)
+            {}
+        }
+    }//addCliente
+ 
+    
     public Vector<cliente> showCliente()
     {
         Vector<cliente> vecPro=new Vector<cliente>();

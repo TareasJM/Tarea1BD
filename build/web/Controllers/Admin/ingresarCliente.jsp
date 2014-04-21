@@ -13,7 +13,7 @@
 <body>
 	<div id="content">
 		<%
-		 	if (rut.equals(rpass) && )// se necesita la base de datos aca
+		 	if (rut.equals(rpass))// se necesita la base de datos aca
 			{
 				response.sendRedirect("../../Views/index.jsp");
 			}
