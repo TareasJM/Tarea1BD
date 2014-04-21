@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
 <html>
 	<head>
-		<link href="../../Resources/css/vendedor.css" rel="stylesheet" type="text/css">
+		<link href="../../Resources/css/usuarios.css" rel="stylesheet" type="text/css">
 	</head>
 	<body >
 		<div style="text-align:center;" id="content">
@@ -12,7 +12,7 @@
 				<br />
 				Password: <input type="password" class = "pass" name="pass" placeholder="Password" />
 				<br />
-				Nombre: <input type="password" class = "nombre" name="nombre" placeholder="Nombre">
+				Nombre: <input type="text" class = "nombre" name="nombre" placeholder="Nombre">
 				<br />
 				Tipo: <input type="text" class = "tipo" name ="tipo" placeholder="Tipo" />
                                 </br>

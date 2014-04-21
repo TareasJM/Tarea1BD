@@ -1,0 +1,64 @@
+body
+{
+	background-image:url("../img/fondo2");	
+
+  	background-size: 100%;
+}
+#content
+{
+	width: 50%;
+	text-align: justify;
+	border: 1px solid white;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 150px;
+	padding-bottom: 100px;
+	color: white;
+}
+#content a
+{
+	color: white;
+}
+.rut
+{
+	margin-left: 57px;
+	margin-top: 70px;
+        margin-right: 3px;
+	display: inline-block;
+}
+
+.pass
+{	
+	margin-top: 10px;
+	margin-left: 19px;
+        margin-right: 3px;
+
+}
+
+.nombre
+{
+	margin-top: 10px;
+        margin-left: 27px;
+}
+
+.tipo
+{
+	margin-top: 10px;
+	margin-left: 50px;
+        margin-right: 0px;
+}
+
+.comision
+{
+    margin-top: 10px;
+    margin-left:15px;
+    margin-right: 1px;
+}
+.submits
+{
+	display: inline-block;
+	margin-top: 50px;
+	margin-left: -170px;
+	position: absolute;
+	clear: fixed;
+}

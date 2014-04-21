@@ -1,3 +1,4 @@
+<%@page import="modelo.usuario"%>
 <%@page import="modelo.cliente"%>
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
 <html>
@@ -20,8 +21,8 @@
                                 <td style="width:250px; text-align:top-center;" ><h2 class ="t1">Nombre</h2></td> 
                             </tr>
                                 <%
-                                    cliente user = new cliente();
-                                    for(cliente temp: user.showCliente()){
+                                    usuario user = new usuario();
+                                    for(usuario temp: user.showUsers()){
                                 %>
                             <tr>
                                 <td ><a name="nombre" href ="editarProducto2.jsp"  class="list"><p text-align="center" class ="uno" name="nombre"><%= temp.getNombre()%></p></a></td> 

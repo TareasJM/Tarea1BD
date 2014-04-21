@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -191,31 +192,38 @@ public class usuario
         return vecPro;
     }//mostrar usuarios
     
-    public String getTipoFromUser(String nombre)
+     public usuario getUser(String nombre)
     {
-        String sql="SELECT FROM usuarios WHERE nombre ='"+nombre+"' ";
-        String tipo = "";
+        usuario user = new usuario();
+        String sql="SELECT * FROM usuarios where nombre = '"+nombre+"'";
         try{
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario,clave);
             pr=con.prepareStatement(sql);
-            tipo = rs.getString("tipo");
-            pr.executeQuery();
-        }
-        catch(Exception ex)
-        {}
-        finally
-        {
-            try
+            rs=pr.executeQuery();
+            while(rs.next())
             {
+                user.setRut(rs.getString("rut"));
+                user.setPass(rs.getString("contraseña"));
+                user.setNombre(rs.getString("nombre"));
+                user.setTipo(rs.getString("tipo"));
+                user.setComision(rs.getInt("comision"));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            try{
+                rs.close();
                 pr.close();
                 con.close();
+            }catch(Exception ex){
+
             }
-            catch(Exception ex)
-            {}
         }
+        return user;
+    }//getUser
         
-        return tipo;
-    }//getTipoFromUser
+
+     
         
 }
