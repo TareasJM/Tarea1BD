@@ -99,6 +99,41 @@ public class basedatos
     }//insertCompra
     
     
+    public void insertVenta( String cliente, String producto, int cantidad)
+    {
+       String sql="Insert into cventas values(?,?,?)";//nombre de la table
+     
+        try
+        {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setString(1, cliente);
+            pr.setString(2, producto);
+            pr.setInt(3, cantidad);    
+            pr.executeUpdate();
+        }
+        catch(Exception ev)
+        {
+            sql="update ventas set producto=?, cantidad=? where cliente=?";
+            try
+            {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, cantidad);
+            pr.setString(2, producto);
+            pr.setString(3, cliente);
+            pr.executeUpdate();
+            
+            }
+            catch(Exception e)
+            {}
+        }
+        
+        
+    }//insertVenta
+    
      public void addProducto(int id, int stock, String descripcion,
                             String categoria, int precio, String nombre)
     {
@@ -139,7 +174,45 @@ public class basedatos
         }
     }//addProducto
      
-
+     
+     
+    public void addUser(String rut, String contraseña, String nombre,
+                            String tipo, int comision)
+    {
+       String sql="Insert into usuarios values(?,?,?,?,?)";//nombre de la table
+     
+        try
+        {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setString(1, rut);
+            pr.setString(2, contraseña);
+            pr.setString(3, nombre);
+            pr.setString(4, tipo);
+            pr.setInt(5, comision);    
+            pr.executeUpdate();
+        }
+        catch(Exception ev)
+        {
+            sql="update usuarios set nombre =?, tipo=?, contraseña=?, comision=?, where rut=?";
+            try
+            {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, comision);
+            pr.setString(2, tipo);
+            pr.setString(3, nombre);
+            pr.setString(4, contraseña);
+            pr.setString(5, rut);
+            pr.executeUpdate();
+            
+            }
+            catch(Exception e)
+            {}
+        }
+    }//addUser
  
     
     public Vector<cliente> showCliente()
@@ -193,7 +266,7 @@ public class basedatos
             catch(Exception ex)
             {}
         }
-    }
+    }//deleteProducto
      
     public void deleteAllProductos()
       {
