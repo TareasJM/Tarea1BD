@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import modelo.basedatos;
 
 /**
@@ -38,6 +39,7 @@ public class ingresarCompra extends HttpServlet {
             
             compra.insertCompra(producto, Integer.parseInt(cantidad), Integer.parseInt(precio));
             response.sendRedirect("Views/index.jsp");
+            JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
             
         } finally 
         {            

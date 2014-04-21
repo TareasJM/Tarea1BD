@@ -10,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import controller.ServiciosBD;
 import java.sql.*;
 import java.util.*;
 import javax.servlet.http.HttpSession;
@@ -31,12 +30,10 @@ public class editProductos extends HttpServlet {
         try 
         {
           
-            HttpSession sesion=request.getSession();
+            
             basedatos pro=new basedatos();
-            String codigo = String.valueOf(sesion.getAttribute("id"));
-            int ide =Integer.parseInt(codigo);
-            pro.deleteProducto(ide);
             String id = request.getParameter("id").toUpperCase();
+            pro.deleteProducto(Integer.parseInt(id));          
             String cantidad = request.getParameter("cantidad").toUpperCase();
             String descripcion = request.getParameter("descripcion").toUpperCase();
             String categoria = request.getParameter("categoria").toUpperCase();
@@ -44,8 +41,8 @@ public class editProductos extends HttpServlet {
             String nombre = request.getParameter("nombre").toUpperCase();           
             pro.addProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
             descripcion, categoria, Integer.parseInt(precio),nombre);
-            response.sendRedirect("Views/index.jsp");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("Views/Admin/administrarProductos.jsp");
+
             
         } finally {            
             out.close();

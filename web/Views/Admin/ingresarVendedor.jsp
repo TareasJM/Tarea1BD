@@ -16,6 +16,7 @@
 				<br />
 				Nombre: <input type="text" class = "nombre" name ="nombre" placeholder="Nombre" />
 				<input type="submit" class = "submits" value="Finalizar" />
+                                
 			</form>
                     
 		</div>

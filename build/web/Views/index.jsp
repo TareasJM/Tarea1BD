@@ -5,8 +5,17 @@
 	 <title>Pagina Inicio Pepe's</title> 
 	 <link href="../Resources/css/master.css" rel="stylesheet" type="text/css">
 	 <link href="../Resources/css/index.css" rel="stylesheet" type="text/css">
+         <script language="JavaScript">
+            function Abrir_ventana (pagina) 
+            {
+                var opciones="toolbar=no, location=no, directories=no, \n\
+                status=no, menubar=no, scrollbars=no, resizable=yes, width=508, \n\
+                height=365, top=85, left=140";
+                window.open(pagina,"",opciones);
+            }               
+          </script>
  </head> 
- <body> 
+ <body  > 
  	<div id="content">
  		<div id="optionsMenu">
 			<%
@@ -21,7 +30,7 @@
 				} 
 			 	else if (session.getAttribute("userType").equals("administrador"))
 				{       
-
+                                       
 					%>
 			 			<h2>Bienvenido Administrador</h2>
 			 			<h3>Controles</h3>

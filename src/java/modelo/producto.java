@@ -5,7 +5,7 @@
 
 package modelo;
 
-import controller.ServiciosBD;
+
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -167,18 +167,7 @@ public class producto
         }
         return vecPro;
     }
-   
-    public static void modProducto(String id, String stock, String descripcion,
-                            String categoria, String precio, String nombre) 
-    {
-        String sql="Update productos SET stock ='" + stock + "'," 
-               + " descripcion ='" + descripcion + "' , "+ "precio ='" +
-               precio+ "' , " + "categoria ='" + categoria +"' ,"
-               + "nombre = '"+ nombre +"',"+"where id ='"+ id +"'";
-        ServiciosBD.ejecutarUpdate(sql);
-        JOptionPane.showMessageDialog(null, "Producto Actualizado");
 
-    }   
     
    
 

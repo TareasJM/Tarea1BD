@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import modelo.basedatos;
 
 /**
@@ -29,7 +30,8 @@ public class addProducto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
+        try 
+        {
             
             basedatos producto = new basedatos();
             String id = request.getParameter("id").toUpperCase();
@@ -38,12 +40,10 @@ public class addProducto extends HttpServlet {
             String categoria = request.getParameter("categoria").toUpperCase();
             String precio = request.getParameter("precio").toUpperCase();
             String nombre = request.getParameter("nombre").toUpperCase();
-                     
-            
             producto.addProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
             descripcion, categoria, Integer.parseInt(precio),nombre);
             response.sendRedirect("Views/index.jsp");
-            
+            JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
             
         } finally {            
             out.close();

@@ -24,7 +24,7 @@
                                     for(producto temp: prod.showProducto()){
                                 %>
                             <tr>
-                                <td ><a href ="editarProducto.jsp"  class="list"><p text-align="center" class ="uno" name="nombre"><%= temp.getNombre()%></p></a></td> 
+                                <td ><a name="nombre" href ="editarProducto2.jsp"  class="list"><p text-align="center" class ="uno" name="nombre"><%= temp.getNombre()%></p></a></td> 
                             </tr>    
                                 
                                <%}%>

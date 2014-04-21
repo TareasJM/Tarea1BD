@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import modelo.basedatos;
 import modelo.usuario;
 
@@ -38,10 +39,10 @@ public class ingresarv extends HttpServlet {
             basedatos user = new basedatos();
             String rut = request.getParameter("rut").toUpperCase();
             String pass = request.getParameter("pass").toUpperCase();
-            String nombre = request.getParameter("nombre").toUpperCase();
-            
-            user.insertV(rut, pass, nombre);
+            String nombre = request.getParameter("nombre").toUpperCase();           
+            user.insertV(rut, pass, nombre);           
             response.sendRedirect("Views/index.jsp");
+            JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
             
         } finally {            
             out.close();

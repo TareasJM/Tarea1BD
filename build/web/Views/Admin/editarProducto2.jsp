@@ -1,6 +1,6 @@
 <%@page import="modelo.producto"%>
 <%
-String name = request.getParameter( "buscar" ).toUpperCase();
+String name = request.getParameter( "nombre" ).toUpperCase();
 %>
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
 <html>
@@ -16,7 +16,7 @@ String name = request.getParameter( "buscar" ).toUpperCase();
                         </br>
                         <a href ="administrarProductos.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form> 
-                    <form  action="../../editProducto" method="POST">
+                    <form  action="../../editProductos" method="POST">
                             <%
                                     producto prod =new producto();
                                     for(producto temp: prod.editProducto())
@@ -24,7 +24,7 @@ String name = request.getParameter( "buscar" ).toUpperCase();
                             
                              if(name.equals(temp.getNombre()))
                              {
-                                name = "";
+                                
                                 %>
                             Código: <input type="text" class = "codigo" name="id" value ="<%=temp.getId_producto()%>"disabled>
                             <br />
@@ -43,7 +43,7 @@ String name = request.getParameter( "buscar" ).toUpperCase();
                       
                           
                             }%>
-                            <input  type="submit" class = "submits" value="Guardar Cambios" />    
+                            <input  type="submit" class = "submits" value="Guardarr Cambios" />    
                    
                     </form>
 		</div>

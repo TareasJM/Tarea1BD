@@ -1,14 +1,7 @@
 <%@page import="modelo.producto"%>
 <%
-String name = "", nombre2 = "";
-if(request.getParameter( "buscar" ).toUpperCase()!= null)
-{
-    name = request.getParameter( "buscar" ).toUpperCase();
-}
-else
-{
-    nombre2 = request.getParameter( "nombre" ).toUpperCase();
-}%>
+String name = request.getParameter( "buscar" ).toUpperCase();
+%>
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
 <html>
 	<head>
@@ -19,19 +12,19 @@ else
                     <form with =" 10%" class="tabla1" border="1">
                         <p class="dos">Buscar</p>
                         <br>
-                        <input style ="width:125px; margin-top:0px; margin-bottom:10px" type="text" class = "buscar" name="buscar" placeholder="Buscar Producto">
+                        <input action ="editarProducto.jsp" style ="width:125px; margin-top:0px; margin-bottom:10px" type="text" class = "buscar" name="buscar" placeholder="Buscar Producto">
                         </br>
-                        <a href ="../../index.jsp" sytle type ="text/css" class ="cuatro">Listo</a>
+                        <a href ="administrarProductos.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form> 
-                    <form action="../../editProductos" method="POST">
+                    <form  action="../../editProducto" method="POST">
                             <%
                                     producto prod =new producto();
                                     for(producto temp: prod.editProducto())
                             {
                             
-                             if(name.equals(temp.getNombre()) || nombre2.equals(temp.getNombre()))
+                             if(name.equals(temp.getNombre()))
                              {
-                                String descripcion = temp.getCategoria();
+                                name = "";
                                 %>
                             Código: <input type="text" class = "codigo" name="id" value ="<%=temp.getId_producto()%>"disabled>
                             <br />
@@ -50,7 +43,7 @@ else
                       
                           
                             }%>
-                            <input type="submit" class = "submits" value="Finalizar" />    
+                            <input  type="submit" class = "submits" value="Guardar Cambios" />    
                    
                     </form>
 		</div>

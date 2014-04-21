@@ -61,7 +61,8 @@ public class basedatos
             catch(Exception e)
             {}
         }
-    }    
+    }//insertV 
+    
     public void insertCompra( String producto, int cantidad, int precio)
     {
        String sql="Insert into compras values(?,?,?)";//nombre de la table
@@ -95,7 +96,7 @@ public class basedatos
         }
         
         
-    }
+    }//insertCompra
     
     
      public void addProducto(int id, int stock, String descripcion,
@@ -118,7 +119,7 @@ public class basedatos
         }
         catch(Exception ev)
         {
-            sql="update productos set nombre =?, precio=?, categoria=?, descripcio=?, stock=? where id=?";
+            sql="update productos set nombre =?, precio=?, categoria=?, descripcion=?, stock=? where id=?";
             try
             {
             Class.forName(classfor);

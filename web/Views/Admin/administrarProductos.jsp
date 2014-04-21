@@ -17,7 +17,7 @@
                         </br>
                         <a href ="../index.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form>
-                    <table width="90%" class="tabla2" border="1"> 
+                    <table width="89%" class="tabla2" border="1"> 
                             <tr>
                                 
                                 <td style="width:250px; text-align:top;"><h2 class ="t1">Código</h2></td> 
