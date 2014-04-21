@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 
 /**
@@ -290,4 +291,54 @@ public class basedatos
             {}
         }
     } //elimiar producto
+    
+    public void addVenta(String rutC, String rutV, String producto,
+                             int cantidad) 
+    {
+        int id = 0;
+        String sql="SELECT ID FROM ventas order by id DESC LIMIT 1 ";
+        try
+        {
+            
+
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            id = rs.getInt("id")+1;
+
+        sql="Insert into ventas values(?,?,?,?,?)";//nombre de la table
+            
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, id);   
+            pr.setString(2, rutC);
+            pr.setString(3, rutV);
+            pr.setString(4, producto);
+            pr.setInt(5, cantidad);
+             
+            pr.executeUpdate();
+        }
+        catch(Exception ev)
+        {
+            sql="update ventas set id_cliente =?, id_usuario=?, monto_total=?, fecha=?, hora=?, where id_venta=?";
+            try
+            {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, cantidad);
+            pr.setString(2, producto);
+            pr.setString(3, rutV);
+            pr.setString(4, rutC);
+            pr.setInt(5, id);
+            pr.executeUpdate();
+            
+            }
+            catch(Exception e)
+            {}
+        }
+    }//addVenta
+ 
+    
+    
 }//basedatos

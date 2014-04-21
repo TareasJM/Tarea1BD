@@ -132,6 +132,9 @@ td
     text-align: center;
     text-decoration: none;
     color:white;
+    background: transparent;
+    border:none;
+    cursor: pointer; 
 }
 
 .submits

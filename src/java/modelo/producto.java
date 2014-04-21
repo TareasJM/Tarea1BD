@@ -103,7 +103,10 @@ public class producto
                 producto pro =new producto();
                 pro.setId_producto(rs.getInt("id"));
                 pro.setNombre(rs.getString("nombre"));
-                pro.setStock(rs.getInt("stock"));//nombre en oracle
+                pro.setStock(rs.getInt("stock"));
+                pro.setCategoria(rs.getString("categoria"));
+                pro.setDescripcion(rs.getString("descripcion"));
+                pro.setPrecio(rs.getInt("precio"));//nombre en oracle
                 vecPro.add(pro);
             }
         }
@@ -127,26 +130,27 @@ public class producto
     }//mostrarProductos
     
     
-   public Vector<producto> editProducto()
+   public void editProducto(int id,int cantidad,String nombre,String descripcion,
+           String categoria, int precio)
     {
-        Vector<producto> vecPro=new Vector<producto>();
-        String sql="SELECT * FROM productos order by id";
+        String sql="UPDATE productos set nombre =?, stock=?, categoria=?, "
+                + "descripcion=?, precio=? where id ='"+id+"'";
+                
         try
         {
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario,clave);
             pr=con.prepareStatement(sql);
-            rs=pr.executeQuery();
             while(rs.next())
             {
-                producto pro =new producto();
-                pro.setId_producto(rs.getInt("id"));
-                pro.setNombre(rs.getString("nombre"));
-                pro.setStock(rs.getInt("stock"));//nombre en oracle
-                pro.setCategoria(rs.getString("categoria"));
-                pro.setDescripcion(rs.getString("descripcion"));
-                pro.setPrecio(rs.getInt("precio"));
-                vecPro.add(pro);
+                
+                pr.setInt(1,id);
+                pr.setInt(2,cantidad);
+                pr.setString(3,descripcion);//nombre en oracle
+                pr.setString(4,categoria);
+                pr.setInt(5,precio);
+                pr.setString(6,nombre);
+                pr.executeUpdate();
             }
         }
         catch(Exception ex)
@@ -165,8 +169,8 @@ public class producto
 
             }
         }
-        return vecPro;
-    }
+        
+    }//editProducto
 
     
    

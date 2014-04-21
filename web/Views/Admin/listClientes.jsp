@@ -21,8 +21,8 @@
                                 <td style="width:250px; text-align:top-center;" ><h2 class ="t1">Nombre</h2></td> 
                             </tr>
                                 <%
-                                    usuario user = new usuario();
-                                    for(usuario temp: user.showUsers()){
+                                    cliente clien = new cliente();
+                                    for(cliente temp: cliente.showClients()){
                                 %>
                             <tr>
                                 <td ><a name="nombre" href ="editarProducto2.jsp"  class="list"><p text-align="center" class ="uno" name="nombre"><%= temp.getNombre()%></p></a></td> 

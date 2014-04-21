@@ -29,18 +29,22 @@ public class editProductos extends HttpServlet {
         PrintWriter out = response.getWriter();
         try 
         {
+            JOptionPane.showMessageDialog(null, " .");
           
             
             basedatos pro=new basedatos();
             String id = request.getParameter("id").toUpperCase();
             pro.deleteProducto(Integer.parseInt(id));          
             String cantidad = request.getParameter("cantidad").toUpperCase();
+            
+            JOptionPane.showMessageDialog(null, id);
             String descripcion = request.getParameter("descripcion").toUpperCase();
             String categoria = request.getParameter("categoria").toUpperCase();
             String precio = request.getParameter("precio").toUpperCase();
-            String nombre = request.getParameter("nombre").toUpperCase();           
+            String nombre = request.getParameter("nombre").toUpperCase();        
             pro.addProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
             descripcion, categoria, Integer.parseInt(precio),nombre);
+            JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
             response.sendRedirect("Views/Admin/administrarProductos.jsp");
 
             
