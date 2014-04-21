@@ -25,16 +25,16 @@ String name = request.getParameter( "buscar" ).toUpperCase();
                              {
                                 
                                 %>
-                            <form  action="../../editProductos" method="POST">
-                            Código: <input type="text" class = "codigo" name="id" value ="<%=temp.getId_producto()%>" disabled/>
+                            <form  style="text-align: center" action="../../editProductos" method="POST">
+                            Código: <input type="text" class = "codigo" name="id" value ="<%=temp.getId_producto()%>" readonly/>
                             <br />
-                            Nombre: <input type="text" class = "nombre" name = "nombre" value ="<%=temp.getNombre()%>" disabled/>
+                            Nombre: <input type="text" class = "nombre" name = "nombre" value ="<%=temp.getNombre()%>" readonly/>
                             <br />
                             Descripcion: <input type="text" class = "descripcion" name="descripcion"  value="<%=temp.getDescripcion()%>"/>
                             <br />
                             Categoría: <input type="text" class = "categoria" name = "categoria" value ="<%=temp.getCategoria()%>" />
                             <br />
-                            Cantidad: <input type="text" class = "cantidad" name="cantidad" value ="<%=temp.getStock()%>" disabled/>
+                            Cantidad: <input type="text" class = "cantidad" name="cantidad" value ="<%=temp.getStock()%>" readonly/>
                             <br />
                             Precio: <input type="text" class = "precio" name = "precio" value ="<%=temp.getPrecio()%>" />
                             <input  type="submit" class = "submits" value="Guardar Cambios" />    
