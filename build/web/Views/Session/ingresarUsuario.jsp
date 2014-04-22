@@ -12,6 +12,8 @@
 				<br />
 				Password: <input type="password" class = "pass" name="pass" placeholder="Password" />
 				<br />
+                                Repetir Pass: <input type="password" class = "rpass" name="rpass" placeholder="Repetir Contraseña">
+				<br />
 				Nombre: <input type="text" class = "nombre" name="nombre" placeholder="Nombre">
 				<br />
 				Tipo: <input type="text" class = "tipo" name ="tipo" placeholder="Tipo" />

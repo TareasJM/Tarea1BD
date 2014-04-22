@@ -324,8 +324,8 @@ public class basedatos
         }
     } //elimiar producto
     
-    public void addVenta(String rutC, String rutV, String producto,
-                             int cantidad) 
+    public void addVenta(String rutC, String rutV,
+                             int monto, String fecha, String hora) 
     {
         int id = 0;
         String sql="SELECT ID FROM ventas order by id DESC LIMIT 1 ";
@@ -339,14 +339,15 @@ public class basedatos
             rs=pr.executeQuery();
             id = rs.getInt("id")+1;
 
-        sql="Insert into ventas values(?,?,?,?,?)";//nombre de la table
+        sql="Insert into ventas values(?,?,?,?,?,?)";//nombre de la table
             
             pr=con.prepareStatement(sql);
             pr.setInt(1, id);   
             pr.setString(2, rutC);
             pr.setString(3, rutV);
-            pr.setString(4, producto);
-            pr.setInt(5, cantidad);
+            pr.setInt(4, monto);
+            pr.setString(5, fecha);
+            pr.setString(6, hora);
              
             pr.executeUpdate();
         }
@@ -358,11 +359,12 @@ public class basedatos
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario, clave);
             pr=con.prepareStatement(sql);
-            pr.setInt(1, cantidad);
-            pr.setString(2, producto);
-            pr.setString(3, rutV);
-            pr.setString(4, rutC);
-            pr.setInt(5, id);
+            pr.setString(1, hora);
+            pr.setString(2, fecha);
+            pr.setInt(3, monto);
+            pr.setString(4, rutV);
+            pr.setString(5, rutC);
+            pr.setInt(6, id);
             pr.executeUpdate();
             
             }

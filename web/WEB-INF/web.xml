@@ -42,7 +42,7 @@
     </servlet>
     <servlet>
         <servlet-name>ingresarVenta</servlet-name>
-        <servlet-class>controller.ingresarVenta</servlet-class>
+        <servlet-class>controller.addVenta</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ingresarUsuario</servlet-name>
@@ -51,6 +51,10 @@
     <servlet>
         <servlet-name>ingresarCliente</servlet-name>
         <servlet-class>controller.ingresarCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>prueba</servlet-name>
+        <servlet-class>controller.prueba</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ingresarCliente</servlet-name>
         <url-pattern>/ingresarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>prueba</servlet-name>
+        <url-pattern>/prueba</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

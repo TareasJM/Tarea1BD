@@ -1,6 +1,15 @@
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="modelo.producto"%>
 <%
+
+          if(session.getAttribute("userType")==null)
+    {
+         JOptionPane.showMessageDialog(null,"Se necesita iniciar sesion");
+          response.sendRedirect("../Session/login.jsp");
+    }
+
 String name = request.getParameter( "buscar" ).toUpperCase();
+
 %>
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
 <html>

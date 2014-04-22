@@ -33,17 +33,20 @@ public class editProductos extends HttpServlet {
             
           
             
-            basedatos pro=new basedatos();
+           // basedatos pro=new basedatos();
+            producto pro = new producto();
             String id = request.getParameter("id").toUpperCase();
-            pro.deleteProducto(Integer.parseInt(id));          
+            //pro.deleteProducto(Integer.parseInt(id));          
             String cantidad = request.getParameter("cantidad").toUpperCase();  
             String descripcion = request.getParameter("descripcion").toUpperCase();
             String categoria = request.getParameter("categoria").toUpperCase();
             String precio = request.getParameter("precio").toUpperCase();
             String nombre = request.getParameter("nombre").toUpperCase();        
-            pro.addProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
-            descripcion, categoria, Integer.parseInt(precio),nombre);
-            JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
+            //pro.addProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
+            //descripcion, categoria, Integer.parseInt(precio),nombre);
+            pro.editProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
+                    nombre, descripcion, categoria, Integer.parseInt(precio));
+            JOptionPane.showMessageDialog(null,"Datos Cambiados Con Éxito");
             response.sendRedirect("Views/index.jsp");
 
             

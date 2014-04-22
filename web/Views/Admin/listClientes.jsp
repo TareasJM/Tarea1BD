@@ -1,6 +1,14 @@
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="modelo.usuario"%>
 <%@page import="modelo.cliente"%>
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
+<%
+          if(session.getAttribute("userType")==null)
+    {
+         JOptionPane.showMessageDialog(null,"Se necesita iniciar sesion");
+          response.sendRedirect("../Session/login.jsp");
+    }
+ %>
 <html>
 	<head>
 		<link href="../../Resources/css/listaproductos.css" rel="stylesheet" type="text/css">
@@ -22,7 +30,7 @@
                             </tr>
                                 <%
                                     cliente clien = new cliente();
-                                    for(cliente temp: cliente.showClients()){
+                                    for(cliente temp: clien.showCliente()){
                                 %>
                             <tr>
                                 <td ><a name="nombre" href ="editarProducto2.jsp"  class="list"><p text-align="center" class ="uno" name="nombre"><%= temp.getNombre()%></p></a></td> 

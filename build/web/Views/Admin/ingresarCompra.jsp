@@ -1,5 +1,13 @@
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="modelo.compra"%>
 <%@ page language="java" contentType="text/html charset=UTF-8" %> 
+<%
+          if(session.getAttribute("userType")==null)
+    {
+         JOptionPane.showMessageDialog(null,"Se necesita iniciar sesion");
+          response.sendRedirect("../Session/login.jsp");
+    }
+ %>
 <html>
 	<head>
 		<link href="../../Resources/css/compra.css" rel="stylesheet" type="text/css">

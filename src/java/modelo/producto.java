@@ -133,25 +133,16 @@ public class producto
    public void editProducto(int id,int cantidad,String nombre,String descripcion,
            String categoria, int precio)
     {
-        String sql="UPDATE productos set nombre =?, stock=?, categoria=?, "
-                + "descripcion=?, precio=? where id ='"+id+"'";
+        String sql="UPDATE productos set nombre ='"+nombre+"', stock='"+cantidad +"', categoria='"
+                + categoria +"', descripcion='"+descripcion+"', precio='"+precio+"' where id ='"+id+"'";
                 
         try
         {
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario,clave);
             pr=con.prepareStatement(sql);
-            while(rs.next())
-            {
-                
-                pr.setInt(1,id);
-                pr.setInt(2,cantidad);
-                pr.setString(3,descripcion);//nombre en oracle
-                pr.setString(4,categoria);
-                pr.setInt(5,precio);
-                pr.setString(6,nombre);
-                pr.executeUpdate();
-            }
+            pr.executeUpdate();
+            
         }
         catch(Exception ex)
         {
@@ -171,6 +162,38 @@ public class producto
         }
         
     }//editProducto
+   
+    public producto getProducto(String nombre)
+    {
+        producto pro = new producto();
+        String sql="SELECT * FROM productos where nombre = '"+nombre+"'";
+        try{
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            while(rs.next())
+            {
+                pro.setId_producto(rs.getInt("id"));
+                pro.setStock(rs.getInt("stock"));
+                pro.setDescripcion(rs.getString("descripcion"));
+                pro.setCategoria(rs.getString("categoria"));
+                pro.setPrecio(rs.getInt("precio"));
+                pro.setNombre(rs.getString("nombre"));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            try{
+                rs.close();
+                pr.close();
+                con.close();
+            }catch(Exception ex){
+
+            }
+        }
+        return pro;
+    }//getProducto
 
     
    

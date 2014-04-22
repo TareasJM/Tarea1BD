@@ -56,9 +56,9 @@
                                                     <h2 style="text-align:center;">Bienvenido Vendedor</h2>
                                                     <h3 style="text-align:center;">Controles</h3>
                                                     <ul>
-                                                            <li> <a href="Vendedor/ingresarCliente.jsp"> Ingresar Cliente </a> </li>
-                                                            <li> <a href="Vendedor/ingresarVenta.jsp"> Ingresar Venta </a> </li>
-                                                            <li> <a href="Vendedor/ventasCliente.jsp"> Ver Ventas a Cliente </a> </li>
+                                                            <li> <a href="Admin/ingresarCliente.jsp"> Ingresar Cliente </a> </li>
+                                                            <li> <a href="Admin/ingresarVenta.jsp"> Ingresar Venta </a> </li>
+                                                            <li> <a href="Admin/ventasCliente.jsp"> Ver Ventas a Cliente </a> </li>
                                                             <li> <a href="Vendedor/misVentas.jsp"> Mis Ventas</a> </li>
                                                             <li> <a href="../Controllers/Session/logout.jsp">Cerrar Sesión </a> </li>
                                                     </ul>
