@@ -1,3 +1,5 @@
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="modelo.cliente"%>
 <%@page import="modelo.usuario"%>
 <%@page import="modelo.venta"%>
@@ -21,6 +23,7 @@
 				Producto: <input type="text" class = "cantidad" name="producto" placeholder="Producto" />
 				<br />
 				Cantidad: <input type="text" class = "precio" name="cantidad" placeholder="cantidad"/>				
+                                
 				<input type="submit" class = "submits" value="Finalizar" />
 			</form>
                     
