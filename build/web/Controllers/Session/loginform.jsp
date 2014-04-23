@@ -12,6 +12,7 @@
                      
                         session.setAttribute( "userType", u.getTipo() );
                         session.setAttribute("userName",u.getNombre());
+                        session.setAttribute("userID",u.getRut());
                         session.setAttribute( "Error", null );
                         response.sendRedirect("../../Views/index.jsp");
                       

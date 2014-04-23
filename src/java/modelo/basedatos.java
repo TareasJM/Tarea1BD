@@ -9,7 +9,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -99,42 +102,7 @@ public class basedatos
         
     }//insertCompra
     
-    
-    public void insertVenta( String cliente, String producto, int cantidad)
-    {
-       String sql="Insert into cventas values(?,?,?)";//nombre de la table
-     
-        try
-        {
-            Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario, clave);
-            pr=con.prepareStatement(sql);
-            pr.setString(1, cliente);
-            pr.setString(2, producto);
-            pr.setInt(3, cantidad);    
-            pr.executeUpdate();
-        }
-        catch(Exception ev)
-        {
-            sql="update ventas set producto=?, cantidad=? where cliente=?";
-            try
-            {
-            Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario, clave);
-            pr=con.prepareStatement(sql);
-            pr.setInt(1, cantidad);
-            pr.setString(2, producto);
-            pr.setString(3, cliente);
-            pr.executeUpdate();
-            
-            }
-            catch(Exception e)
-            {}
-        }
-        
-        
-    }//insertVenta
-    
+
      public void addProducto(int id, int stock, String descripcion,
                             String categoria, int precio, String nombre)
     {
@@ -174,9 +142,7 @@ public class basedatos
             {}
         }
     }//addProducto
-     
-     
-     
+         
     public void addUser(String rut, String contraseña, String nombre,
                             String tipo, int comision)
     {
@@ -276,7 +242,37 @@ public class basedatos
         }
         return vecPro;
     }//mostrarProductos
-        
+    
+     public Map getStocks()
+    {
+         Map<String,Integer> dic = new HashMap<String,Integer>();
+        String sql="SELECT * FROM productos order by id";
+        try{
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            while(rs.next()){
+                
+                dic.put(rs.getString("nombre"),(Integer)rs.getInt("stock"));
+
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            try{
+                rs.close();
+                pr.close();
+                con.close();
+            }catch(Exception ex){
+
+            }
+        }
+        return dic;
+    }//DICCIONARIO PRODUCTOS
+    
+    
+    
      public void deleteProducto(int id)
       {
        String sql="DELETE FROM productos WHERE id=? ";
@@ -328,19 +324,29 @@ public class basedatos
                              int monto, String fecha, String hora) 
     {
         int id = 0;
-        String sql="SELECT ID FROM ventas order by id DESC LIMIT 1 ";
+        String sql="SELECT id_venta FROM ventas order by id_venta DESC";
         try
         {
-            
-
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario,clave);
             pr=con.prepareStatement(sql);
             rs=pr.executeQuery();
-            id = rs.getInt("id")+1;
+            if (rs.next() == false)
+            {
+                JOptionPane.showMessageDialog(null,"false");
+                id = 1;
+            }
+            else
+            {
+                id = rs.getInt("id_venta")+1;
+            }
+        
+            JOptionPane.showMessageDialog(null,"despues if, id="+id);
 
-        sql="Insert into ventas values(?,?,?,?,?,?)";//nombre de la table
-            
+        sql="Insert into VENTAS values(?,?,?,?,?,?)";//nombre de la table
+                        
+            JOptionPane.showMessageDialog(null,"despues insert");
+
             pr=con.prepareStatement(sql);
             pr.setInt(1, id);   
             pr.setString(2, rutC);
@@ -348,8 +354,9 @@ public class basedatos
             pr.setInt(4, monto);
             pr.setString(5, fecha);
             pr.setString(6, hora);
-             
+             JOptionPane.showMessageDialog(null,"yupi");
             pr.executeUpdate();
+             JOptionPane.showMessageDialog(null,"despues yupi2");
         }
         catch(Exception ev)
         {
@@ -373,6 +380,64 @@ public class basedatos
         }
     }//addVenta
  
-    
+     public void insertVenta( String rutC, String rutV,
+                             int monto, String fecha, String hora)
+    {
+       int id = 0;
+        String sql="SELECT iv FROM venta order by iv DESC";
+        try
+        {   
+            
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            if (rs.next() == false)
+            {
+                JOptionPane.showMessageDialog(null,"false");
+                id = 1;
+            }
+            else
+            {
+                id = rs.getInt("iv")+1;
+                JOptionPane.showMessageDialog(null,"despues if, id="+id);
+            }
+            sql="Insert into VENTA values(?,?,?,?,?,?)";
+            
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, id);
+            pr.setString(2, rutC);
+            pr.setString(3, rutV);    
+            pr.setInt(4,monto);
+            pr.setString(5,fecha);
+            pr.setString(6,hora);
+            JOptionPane.showMessageDialog(null,"despues yupi1");
+            pr.executeUpdate();
+            JOptionPane.showMessageDialog(null,"despues yupi2");
+        }
+        catch(Exception ev)
+        {
+            sql="update venta set ic=?, iu=? , mt=?"
+                    + "f=?, h=? where iv=?";
+            try
+            {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setString(1, hora);
+            pr.setString(2, fecha);
+            pr.setInt(3, monto);
+            pr.setString(4,rutV);
+            pr.setString(5,rutC);
+            pr.setInt(6,id);
+            pr.executeUpdate();
+            
+            }
+            catch(Exception e)
+            {}
+        }
+        
+        
+    }//insertv
     
 }//basedatos

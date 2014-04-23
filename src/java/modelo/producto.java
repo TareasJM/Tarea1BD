@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 import java.sql.*;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
@@ -162,6 +163,39 @@ public class producto
         }
         
     }//editProducto
+   
+   
+    public void editStockProducto(int newStock)
+            
+    {   
+        String sql="UPDATE productos set stock='"+newStock +"' where id ='"+this.id_producto+"'";
+                
+        try
+        {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            pr.executeUpdate();
+            
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }finally
+        {
+            try
+            {
+                rs.close();
+                pr.close();
+                con.close();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+        
+    }//editStockProducto
    
     public producto getProducto(String nombre)
     {

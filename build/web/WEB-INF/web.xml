@@ -54,7 +54,7 @@
     </servlet>
     <servlet>
         <servlet-name>prueba</servlet-name>
-        <servlet-class>controller.prueba</servlet-class>
+        <servlet-class>controller.ingresarVenta</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>

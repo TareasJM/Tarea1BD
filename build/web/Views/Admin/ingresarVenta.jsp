@@ -17,7 +17,7 @@
     String htmlClientes = "";
     for(cliente temp: user.showCliente())
     {
-        htmlClientes+= "<option class = \"cliente\" value=\"" + temp.getNombre() + "\">"+ temp.getNombre() +"</option>\n";
+        htmlClientes+= "<option class = \"cliente\" value=\"" + temp.getRut() + "\">"+ temp.getNombre() +"</option>\n";
     }
     String htmlProductos = "";
     for(producto temp: prod.showProducto())
@@ -59,7 +59,7 @@
 				<br />
 				Cantidad: <input type="text" class = "cantidad" name="cantidad1" id="cantidad1"/>
                                 <br/>
-                                <input type="hidden" name ="vendedor" value="<%=session.getAttribute("userName")%>"/>
+                                <input type="hidden" name ="vendedor" value="<%=session.getAttribute("userID")%>"/>
                                 <input type="hidden" name ="np" value="1" id="np"/>
                                 <input type="submit" class = "submits" value="Finalizar" />
 			</form>
