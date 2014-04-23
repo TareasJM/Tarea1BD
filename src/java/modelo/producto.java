@@ -166,8 +166,11 @@ public class producto
    
     
    public void buyProducto(int id,int cantidad,int precio)
-    {
-        String sql="UPDATE productos set stock ='"+cantidad+"', precio ='"+precio+"'"
+    {   
+        producto pro = new producto();
+        pro = pro.getProductoByID(id);
+        int newCantidad = cantidad + pro.getStock();
+        String sql="UPDATE productos set stock ='"+newCantidad+"', precio ='"+precio+"'"
                 + " where id_producto ='"+id+"'";
                 
         try
@@ -259,7 +262,39 @@ public class producto
             }
         }
         return pro;
-    }//getProducto
+    }//getProductoNombre
+    
+     public producto getProductoByID(int id)
+    {
+        producto pro = new producto();
+        String sql="SELECT * FROM productos where id_producto = '"+id+"'";
+        try{
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            while(rs.next())
+            {
+                pro.setId_producto(rs.getInt("id_producto"));
+                pro.setStock(rs.getInt("stock"));
+                pro.setDescripcion(rs.getString("descripcion"));
+                pro.setCategoria(rs.getString("categoria"));
+                pro.setPrecio(rs.getInt("precio"));
+                pro.setNombre(rs.getString("nombre"));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            try{
+                rs.close();
+                pr.close();
+                con.close();
+            }catch(Exception ex){
+
+            }
+        }
+        return pro;
+    }//getProductoId
 
     
    
