@@ -80,7 +80,7 @@ public class ingresarVenta extends HttpServlet {
 
                 dic.remove(nombre);
                 dic.put(nombre, n);
-
+                ventas.addDetalleVenta(producto.getId_producto(), cantidad);
             }
             
             for (int i=1;i<=np;i++)

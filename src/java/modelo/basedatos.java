@@ -212,6 +212,60 @@ public class basedatos
             {}
         }
     }//addCliente
+    
+    public void addDetalleVenta(int id_producto,int cantidad)
+    {     
+        int id_venta = 0;
+        int id_detalle = 0;
+        String sql="SELECT id_venta FROM ventas order by id_venta DESC";
+        try
+        {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            if (rs.next() == false)
+            {
+                JOptionPane.showMessageDialog(null,"false");
+                id_venta = 1;
+                id_detalle = 1;
+            }
+            else
+            {
+                id_venta = rs.getInt("id_venta")+1;
+                id_detalle = id_venta;
+            }
+            
+            sql="Insert into DETALLEVENTA values(?,?,?,?)";
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, id_detalle);
+            pr.setInt(2, id_venta);   
+            pr.setInt(3, id_producto);   
+            pr.setInt(4, cantidad);
+            JOptionPane.showMessageDialog(null,"detalleventa");
+            pr.executeUpdate();
+            
+
+        }
+        catch(Exception ev)
+        {
+            sql="UPDATE DETALLEVENTA set id_venta =?, id_detalle=?, cantidad =? where id_producto=?";
+            try
+            {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, cantidad);
+            pr.setInt(2, id_producto);   
+            pr.setInt(3, id_venta);   
+            pr.setInt(4, id_detalle);   
+            pr.executeUpdate();
+            
+            }
+            catch(Exception e)
+            {}
+        }
+    }//addDetalleVenta
  
     
     public Vector<cliente> showCliente()
@@ -340,12 +394,9 @@ public class basedatos
             {
                 id = rs.getInt("id_venta")+1;
             }
-        
-            JOptionPane.showMessageDialog(null,"despues if, id="+id);
+                   
 
-        sql="Insert into VENTAS values(?,?,?,?,?,?)";//nombre de la table
-                        
-            JOptionPane.showMessageDialog(null,"despues insert");
+            sql="Insert into VENTAS values(?,?,?,?,?,?)";//nombre de la table
 
             pr=con.prepareStatement(sql);
             pr.setInt(1, id);   
@@ -354,9 +405,7 @@ public class basedatos
             pr.setInt(4, monto);
             pr.setString(5, fecha);
             pr.setString(6, hora);
-             JOptionPane.showMessageDialog(null,"yupi");
             pr.executeUpdate();
-             JOptionPane.showMessageDialog(null,"despues yupi2");
         }
         catch(Exception ev)
         {
@@ -380,64 +429,6 @@ public class basedatos
         }
     }//addVenta
  
-     public void insertVenta( String rutC, String rutV,
-                             int monto, String fecha, String hora)
-    {
-       int id = 0;
-        String sql="SELECT iv FROM venta order by iv DESC";
-        try
-        {   
-            
-            Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario,clave);
-            pr=con.prepareStatement(sql);
-            rs=pr.executeQuery();
-            if (rs.next() == false)
-            {
-                JOptionPane.showMessageDialog(null,"false");
-                id = 1;
-            }
-            else
-            {
-                id = rs.getInt("iv")+1;
-                JOptionPane.showMessageDialog(null,"despues if, id="+id);
-            }
-            sql="Insert into VENTA values(?,?,?,?,?,?)";
-            
-            pr=con.prepareStatement(sql);
-            pr.setInt(1, id);
-            pr.setString(2, rutC);
-            pr.setString(3, rutV);    
-            pr.setInt(4,monto);
-            pr.setString(5,fecha);
-            pr.setString(6,hora);
-            JOptionPane.showMessageDialog(null,"despues yupi1");
-            pr.executeUpdate();
-            JOptionPane.showMessageDialog(null,"despues yupi2");
-        }
-        catch(Exception ev)
-        {
-            sql="update venta set ic=?, iu=? , mt=?"
-                    + "f=?, h=? where iv=?";
-            try
-            {
-            Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario, clave);
-            pr=con.prepareStatement(sql);
-            pr.setString(1, hora);
-            pr.setString(2, fecha);
-            pr.setInt(3, monto);
-            pr.setString(4,rutV);
-            pr.setString(5,rutC);
-            pr.setInt(6,id);
-            pr.executeUpdate();
-            
-            }
-            catch(Exception e)
-            {}
-        }
-        
-        
-    }//insertv
+     
     
 }//basedatos
