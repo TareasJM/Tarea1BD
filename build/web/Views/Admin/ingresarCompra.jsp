@@ -16,7 +16,7 @@
     for(producto temp: prod.showProducto())
     {
         np++;
-        htmlProductos+="<option value= \""+temp.getNombre()+"\">"+temp.getNombre()+"</option>\n";
+        htmlProductos+="<option value= \""+temp.getId_producto()+"\">"+temp.getNombre()+"</option>\n";
     }
  %>
 <html>

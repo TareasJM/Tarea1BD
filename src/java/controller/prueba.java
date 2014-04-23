@@ -87,7 +87,7 @@ public class prueba extends HttpServlet {
             {
                 String nombre = request.getParameter("producto"+i);
                 producto = producto.getProducto(nombre);
-                producto.editStockProducto((int)dic.get(nombre));
+                producto.editStockProducto((Integer)dic.get(nombre));
             }            
             
             //String producto = request.getParameter("producto").toUpperCase();

@@ -67,41 +67,83 @@ public class basedatos
         }
     }//insertV 
     
-    public void insertCompra( String producto, int cantidad, int precio)
+    public int insertCompra(int monto, String fecha, String hora)
     {
-       String sql="Insert into compras values(?,?,?)";//nombre de la table
-     
-        try
-        {
+        int id_compra = 0;
+        String sql="SELECT ID_COMPRA FROM COMPRAS order by ID_COMPRA DESC";
+        try{
             Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario, clave);
+            con=DriverManager.getConnection(url, usuario,clave);
             pr=con.prepareStatement(sql);
-            pr.setString(1, producto);
-            pr.setInt(2, cantidad);
-            pr.setInt(3, precio);    
+            rs=pr.executeQuery();
+            if (rs.next() == false)
+            {
+                id_compra = 1;
+                JOptionPane.showMessageDialog(null,"ID = 1");
+
+            }
+            else
+            {
+                id_compra = rs.getInt("ID_COMPRA")+1;
+            }
+            sql="Insert into COMPRAS values(?,?,?,?)";//nombre de la table
+            
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, id_compra);
+            pr.setInt(2, monto);
+            pr.setString(3, fecha);
+            pr.setString(4, hora);
             pr.executeUpdate();
         }
         catch(Exception ev)
         {
-            sql="update compras set precio=?, cantidad=? where producto=?";
-            try
-            {
-            Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario, clave);
-            pr=con.prepareStatement(sql);
-            pr.setInt(1, precio);
-            pr.setInt(2, cantidad);
-            pr.setString(3, producto);
-            pr.executeUpdate();
-            
-            }
-            catch(Exception e)
-            {}
+            JOptionPane.showMessageDialog(null,"catch");
         }
-        
+
+        return id_compra;
         
     }//insertCompra
     
+public int insertDCompra(int id_compra, int id_producto, int cantidad, int precio)
+    {
+        int id_detalle = 0;
+        String sql="SELECT ID_DETALLE FROM DCOMPRAS order by ID_DETALLE DESC";
+        try{
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            if (rs.next() == false)
+            {
+                JOptionPane.showMessageDialog(null,"ID=1");
+
+                id_detalle = 1;
+            }
+            else
+            {
+                id_detalle = rs.getInt("ID_DETALLE")+1;
+            }
+            sql="Insert into DCOMPRAS values(?,?,?,?,?)";//nombre de la table
+            JOptionPane.showMessageDialog(null,"sql "+id_detalle+" "+id_compra+" "+id_producto+" "+cantidad+" "+precio);
+
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, id_detalle);
+            pr.setInt(2, id_compra);
+            pr.setInt(3, id_producto);
+            pr.setInt(4, cantidad);
+            pr.setInt(5, precio);
+            pr.executeUpdate();
+        }
+        catch(Exception ev)
+        {
+            JOptionPane.showMessageDialog(null,"catch D");
+        }
+
+        return id_compra;
+
+    }//insertDCompra
 
      public void addProducto(int stock, String descripcion,
                             String categoria, int precio, String nombre)

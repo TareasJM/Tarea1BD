@@ -6,6 +6,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +34,35 @@ public class ingresarCompra extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+
+            Calendar fecha = new GregorianCalendar();
+
+            int año = fecha.get(Calendar.YEAR);
+            int mes = fecha.get(Calendar.MONTH);
+            int dia = fecha.get(Calendar.DAY_OF_MONTH);
+            int hora = fecha.get(Calendar.HOUR_OF_DAY);
+            int minuto = fecha.get(Calendar.MINUTE);
+            int segundo = fecha.get(Calendar.SECOND);
+            String dma = Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año);
+            String hms = Integer.toString(hora)+":"+Integer.toString(minuto)+":"+Integer.toString(segundo);
             
             basedatos producto = new basedatos();
             int np = Integer.parseInt(request.getParameter("np"));
+            int monto = 0;
             for (int i=1;i<=np;i++)
             {
-                String nombre = request.getParameter("producto"+i);  
                 int cantidad = Integer.parseInt(request.getParameter("cantidad"+i));
-                String precio = request.getParameter("precio"+i).toUpperCase();
-                producto.insertCompra(nombre, cantidad, Integer.parseInt(precio));
+                int precio = Integer.parseInt(request.getParameter("precio"+i));
+                monto += cantidad*precio;
+            }
+            int id_compra = producto.insertCompra(monto,dma,hms);
+
+            for (int i=1;i<=np;i++)
+            {
+                int id_producto = Integer.parseInt(request.getParameter("producto"+i));
+                int cantidad = Integer.parseInt(request.getParameter("cantidad"+i));
+                int precio = Integer.parseInt(request.getParameter("precio"+i));
+                producto.insertDCompra(id_compra, id_producto, cantidad, precio);
             }
             
             JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
