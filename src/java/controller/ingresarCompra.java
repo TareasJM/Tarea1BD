@@ -33,16 +33,14 @@ public class ingresarCompra extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             
-            producto producto = new producto();
+            basedatos producto = new basedatos();
             int np = Integer.parseInt(request.getParameter("np"));
             for (int i=1;i<=np;i++)
             {
-                String nombre = request.getParameter("producto"+i);
-                producto = producto.getProducto(nombre);
-                int id = producto.getId_producto();  
+                String nombre = request.getParameter("producto"+i);  
                 int cantidad = Integer.parseInt(request.getParameter("cantidad"+i));
                 String precio = request.getParameter("precio"+i).toUpperCase();
-                producto.buyProducto(id, cantidad, Integer.parseInt(precio));
+                producto.insertCompra(nombre, cantidad, Integer.parseInt(precio));
             }
             
             JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
