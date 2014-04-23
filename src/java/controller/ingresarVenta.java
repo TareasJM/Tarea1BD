@@ -40,6 +40,7 @@ public class ingresarVenta extends HttpServlet {
             Enumeration<String> parameterNames = request.getParameterNames();
             
             basedatos pro = new basedatos();
+            basedatos ventas = new basedatos();
             Map dic = pro.getStocks();
             int montoTotal = 0;
 
@@ -54,7 +55,7 @@ public class ingresarVenta extends HttpServlet {
             String dma = Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año);
             String hms = Integer.toString(hora)+":"+Integer.toString(minuto)+":"+Integer.toString(segundo);
             
-            basedatos ventas = new basedatos();
+           
             int np = Integer.parseInt(request.getParameter("np"));
             String cliente = request.getParameter("cliente").toUpperCase();
             String vendedor = request.getParameter("vendedor").toUpperCase();
@@ -69,18 +70,20 @@ public class ingresarVenta extends HttpServlet {
                 montoTotal += precio;
 
                 Integer n = (Integer)dic.get(nombre);
-
                 n = n - (Integer)cantidad;
+                
+                while (n < 0) {
+                    
+                    n = (Integer)dic.get(nombre);
+                    cantidad = Integer.parseInt(JOptionPane.showInputDialog("Cantidad excedida\n"
+                            + "Ingrese una cantidad menor a " + producto.getStock()));
+                    n = n- cantidad;
 
-                if (n<0) {
-                    JOptionPane.showMessageDialog(null,nombre + "no alcanza");
-                    response.sendRedirect("Views/Admin/ingresarVenta.jsp");
-                    return;
                 }
-
+                
                 dic.remove(nombre);
                 dic.put(nombre, n);
-                ventas.addDetalleVenta(producto.getId_producto(), cantidad);
+                
             }
             
             for (int i=1;i<=np;i++)
@@ -88,6 +91,8 @@ public class ingresarVenta extends HttpServlet {
                 String nombre = request.getParameter("producto"+i);
                 producto = producto.getProducto(nombre);
                 producto.editStockProducto((int)dic.get(nombre));
+                int cantidad = Integer.parseInt(request.getParameter("cantidad"+i));
+                ventas.addDetalleVenta(producto.getId_producto(), cantidad);
             }            
             
             //String producto = request.getParameter("producto").toUpperCase();

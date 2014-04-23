@@ -92,7 +92,7 @@ public class producto
     public Vector<producto> showProducto()
     {
         Vector<producto> vecPro=new Vector<producto>();
-        String sql="SELECT * FROM productos order by id";
+        String sql="SELECT * FROM productos order by id_producto";
         try
         {
             Class.forName(classfor);
@@ -102,7 +102,7 @@ public class producto
             while(rs.next())
             {
                 producto pro =new producto();
-                pro.setId_producto(rs.getInt("id"));
+                pro.setId_producto(rs.getInt("id_producto"));
                 pro.setNombre(rs.getString("nombre"));
                 pro.setStock(rs.getInt("stock"));
                 pro.setCategoria(rs.getString("categoria"));
@@ -135,7 +135,7 @@ public class producto
            String categoria, int precio)
     {
         String sql="UPDATE productos set nombre ='"+nombre+"', stock='"+cantidad +"', categoria='"
-                + categoria +"', descripcion='"+descripcion+"', precio='"+precio+"' where id ='"+id+"'";
+                + categoria +"', descripcion='"+descripcion+"', precio='"+precio+"' where id_producto ='"+id+"'";
                 
         try
         {
@@ -168,7 +168,7 @@ public class producto
     public void editStockProducto(int newStock)
             
     {   
-        String sql="UPDATE productos set stock='"+newStock +"' where id ='"+this.id_producto+"'";
+        String sql="UPDATE productos set stock='"+newStock +"' where id_producto ='"+this.id_producto+"'";
                 
         try
         {
@@ -208,7 +208,7 @@ public class producto
             rs=pr.executeQuery();
             while(rs.next())
             {
-                pro.setId_producto(rs.getInt("id"));
+                pro.setId_producto(rs.getInt("id_producto"));
                 pro.setStock(rs.getInt("stock"));
                 pro.setDescripcion(rs.getString("descripcion"));
                 pro.setCategoria(rs.getString("categoria"));
