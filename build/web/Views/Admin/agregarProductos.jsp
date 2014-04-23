@@ -15,8 +15,7 @@
 		<div id="content">
                         
 			<form style ="text-align:center;"action="../../addProducto" method="POST">
-				Código: <input type="text" class = "codigo" name="id" placeholder="Código">
-				<br />
+				
 				Nombre: <input type="text" class = "nombre" name = "nombre" placeholder="Nombre" />
 				<br />
 				Descripción: <input type="text" class = "descripcion" name="descripcion" placeholder="Descripcion">

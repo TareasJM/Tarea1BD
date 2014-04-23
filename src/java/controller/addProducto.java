@@ -34,13 +34,12 @@ public class addProducto extends HttpServlet {
         {
             
             basedatos producto = new basedatos();
-            String id = request.getParameter("id").toUpperCase();
             String cantidad = request.getParameter("cantidad").toUpperCase();
             String descripcion = request.getParameter("descripcion").toUpperCase();
             String categoria = request.getParameter("categoria").toUpperCase();
             String precio = request.getParameter("precio").toUpperCase();
             String nombre = request.getParameter("nombre").toUpperCase();
-            producto.addProducto(Integer.parseInt(id), Integer.parseInt(cantidad),
+            producto.addProducto(Integer.parseInt(cantidad),
             descripcion, categoria, Integer.parseInt(precio),nombre);
             response.sendRedirect("Views/index.jsp");
             JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");

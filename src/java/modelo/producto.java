@@ -164,6 +164,38 @@ public class producto
         
     }//editProducto
    
+    
+   public void buyProducto(int id,int cantidad,int precio)
+    {
+        String sql="UPDATE productos set stock ='"+cantidad+"', precio ='"+precio+"'"
+                + " where id_producto ='"+id+"'";
+                
+        try
+        {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            pr.executeUpdate();
+            
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }finally
+        {
+            try
+            {
+                rs.close();
+                pr.close();
+                con.close();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+        
+    }//buyProducto
    
     public void editStockProducto(int newStock)
             

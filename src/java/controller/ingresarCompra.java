@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 import modelo.basedatos;
+import modelo.producto;
 
 /**
  *
@@ -32,14 +33,21 @@ public class ingresarCompra extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             
-            basedatos compra = new basedatos();
-            String producto = request.getParameter("producto").toUpperCase();
-            String cantidad = request.getParameter("cantidad").toUpperCase();
-            String precio = request.getParameter("precio").toUpperCase();
+            producto producto = new producto();
+            int np = Integer.parseInt(request.getParameter("np"));
+            for (int i=1;i<=np;i++)
+            {
+                String nombre = request.getParameter("producto"+i);
+                producto = producto.getProducto(nombre);
+                int id = producto.getId_producto();  
+                int cantidad = Integer.parseInt(request.getParameter("cantidad"+i));
+                String precio = request.getParameter("precio"+i).toUpperCase();
+                producto.buyProducto(id, cantidad, Integer.parseInt(precio));
+            }
             
-            compra.insertCompra(producto, Integer.parseInt(cantidad), Integer.parseInt(precio));
-            response.sendRedirect("Views/index.jsp");
             JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
+            response.sendRedirect("Views/index.jsp");
+            
             
         } finally 
         {            

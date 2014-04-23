@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,25 +38,11 @@ public class prueba extends HttpServlet {
         try {
             
             Enumeration<String> parameterNames = request.getParameterNames();
+            
+            basedatos pro = new basedatos();
+            Map dic = pro.getStocks();
+            int montoTotal = 0;
 
- 
-
-        while (parameterNames.hasMoreElements()) {
-
-            String paramName = parameterNames.nextElement();
-            JOptionPane.showMessageDialog(null,paramName);
-
-
-            String[] paramValues = request.getParameterValues(paramName);
-
-            for (int i = 0; i < paramValues.length; i++) {
-                String paramValue = paramValues[i];
-
-                JOptionPane.showMessageDialog(null, paramValue);
-
-            }
-        
-            JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
             Calendar fecha = new GregorianCalendar();
              
             int año = fecha.get(Calendar.YEAR);
@@ -68,27 +55,52 @@ public class prueba extends HttpServlet {
             String hms = Integer.toString(hora)+":"+Integer.toString(minuto)+":"+Integer.toString(segundo);
             
             basedatos ventas = new basedatos();
-            producto pro = new producto();
             int np = Integer.parseInt(request.getParameter("np"));
             String cliente = request.getParameter("cliente").toUpperCase();
             String vendedor = request.getParameter("vendedor").toUpperCase();
-            for (int i=1;i<=np;i++){
-                JOptionPane.showMessageDialog(null,request.getParameter("producto"+i)+"->"+request.getParameter("cantidad"+i));
+            producto producto = new producto();
+            
+            for (int i=1;i<=np;i++)
+            {
+                String nombre = request.getParameter("producto"+i);
+                int cantidad = Integer.parseInt(request.getParameter("cantidad"+i));
+                producto = producto.getProducto(nombre);
+                int precio = cantidad*producto.getPrecio();
+                montoTotal += precio;
+
+                Integer n = (Integer)dic.get(nombre);
+
+                n = n - (Integer)cantidad;
+
+                if (n<0) {
+                    JOptionPane.showMessageDialog(null,nombre + "no alcanza");
+                    response.sendRedirect("Views/Admin/ingresarVenta.jsp");
+                    return;
+                }
+
+                dic.remove(nombre);
+                dic.put(nombre, n);
+
             }
+            
+            for (int i=1;i<=np;i++)
+            {
+                String nombre = request.getParameter("producto"+i);
+                producto = producto.getProducto(nombre);
+                producto.editStockProducto((int)dic.get(nombre));
+            }            
+            
             //String producto = request.getParameter("producto").toUpperCase();
             //String cantidad = request.getParameter("cantidad").toUpperCase();   
             //pro = pro.getProducto(producto);
+            ventas.addVenta(cliente, vendedor, montoTotal,dma,hms);
+            JOptionPane.showMessageDialog(null,"Venta OK, monto total: "+montoTotal);
             
             //int monto_total = pro.getPrecio()*Integer.parseInt(cantidad);
-            //ventas.addVenta(cliente, vendedor, monto_total,dma,hms);
             response.sendRedirect("Views/index.jsp");
-            //JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
  
 
-        }
-
-           
-            
+     
             
         } finally 
         {            

@@ -103,15 +103,29 @@ public class basedatos
     }//insertCompra
     
 
-     public void addProducto(int id_producto, int stock, String descripcion,
+     public void addProducto(int stock, String descripcion,
                             String categoria, int precio, String nombre)
-    {
-       String sql="Insert into productos values(?,?,?,?,?,?)";//nombre de la table
-     
+    {  
+       String sql="SELECT id_producto FROM productos order by id_producto DESC";
+       
+       int id_producto = 0;
         try
         {
             Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario, clave);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            if (rs.next() == false)
+            {
+                JOptionPane.showMessageDialog(null,"falseVenta");
+                id_producto = 1;
+            }
+            else
+            {
+                id_producto = rs.getInt("id_producto")+1;
+            }
+            
+            sql="Insert into productos values(?,?,?,?,?,?)";//nombre de la table
             pr=con.prepareStatement(sql);
             pr.setInt(1, id_producto);
             pr.setInt(2, stock);
@@ -337,14 +351,24 @@ public class basedatos
             {
                 JOptionPane.showMessageDialog(null,"falseDetalleVenta");
                 id_venta = 1;
-                id_detalle = 1;
             }
             else
             {
                 id_venta = rs.getInt("id_venta")+1;
-                id_detalle = id_venta;
             }
-            
+            sql="SELECT id_detalle FROM dventa order by id_detalle DESC";
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            if (rs.next() == false)
+            {
+                JOptionPane.showMessageDialog(null,"falseDetalleVenta");
+                id_detalle = 1;
+            }
+            else
+            {
+                id_detalle = rs.getInt("id_detalle")+1;
+
+            }
             sql="Insert into dventa values(?,?,?,?)";
            
             pr=con.prepareStatement(sql);
@@ -356,9 +380,10 @@ public class basedatos
             JOptionPane.showMessageDialog(null,"id_producto = "+id_producto);
             pr.setInt(4, cantidad);
             JOptionPane.showMessageDialog(null,"cantidad = "+cantidad);
+            JOptionPane.showMessageDialog(null,"ANTES EXECUTE");
             
-             pr.executeUpdate();
-            
+            pr.executeUpdate();
+            JOptionPane.showMessageDialog(null,"DPS EXECUTE");
             
 
         }
@@ -382,7 +407,7 @@ public class basedatos
         }
     }//addDetalleVenta
     
-    public void addVenta(String rutC, String rutV,
+    public int addVenta(String rutC, String rutV,
                              int monto, String fecha, String hora) 
     {
         int id = 0;
@@ -405,8 +430,7 @@ public class basedatos
                    
 
             sql="Insert into VENTAS values(?,?,?,?,?,?)";//nombre de la table
-
-            pr=con.prepareStatement(sql);
+            pr=con.prepareStatement(sql);      
             pr.setInt(1, id);   
             pr.setString(2, rutC);
             pr.setString(3, rutV);
@@ -417,26 +441,70 @@ public class basedatos
         }
         catch(Exception ev)
         {
-            sql="update ventas set id_cliente =?, id_usuario=?, monto_total=?, fecha=?, hora=?, where id_venta=?";
+            sql="UPDATE VENTAS order by id_venta ASC";
             try
             {
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario, clave);
             pr=con.prepareStatement(sql);
-            pr.setString(1, hora);
-            pr.setString(2, fecha);
-            pr.setInt(3, monto);
-            pr.setString(4, rutV);
-            pr.setString(5, rutC);
-            pr.setInt(6, id);
             pr.executeUpdate();
-            
+            JOptionPane.showMessageDialog(null,"UPDATE VENTAS");
             }
             catch(Exception e)
             {}
         }
+        return id;
     }//addVenta
  
-     
+    
+    public void addDVenta(int id_venta, int id_producto, int cantidad)
+    {
+        int id_detalle=0;
+        String sql="SELECT id_detalle FROM dventa order by id_detalle DESC";
+        try
+        {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario,clave);
+            pr=con.prepareStatement(sql);
+            rs=pr.executeQuery();
+            if (rs.next() == false)
+            {
+                id_detalle = 1;
+            }
+            else
+            {
+                id_detalle = rs.getInt("id_detalle")+1;
+            }
+
+            sql="INSERT INTO DVENTA VALUES(?,?,?,?)";//nombre de la table
+
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, id_detalle);
+            pr.setInt(2, id_venta);
+            pr.setInt(3, id_producto);
+            pr.setInt(4, cantidad);
+            pr.executeUpdate();
+
+        }
+        catch(Exception ev)
+        {
+            sql="update dventa set id_venta =?, id_detalle=?, cantidad=? where id_producto=?";
+            try
+            {
+            Class.forName(classfor);
+            con=DriverManager.getConnection(url, usuario, clave);
+            pr=con.prepareStatement(sql);
+            pr.setInt(1, cantidad);
+            pr.setInt(2, id_producto);
+            pr.setInt(3, id_venta);
+            pr.setInt(4, id_detalle);
+            pr.executeUpdate();
+
+            }
+            catch(Exception e)
+            {}
+        }
+    }//addDVENTA
+    
     
 }//basedatos
