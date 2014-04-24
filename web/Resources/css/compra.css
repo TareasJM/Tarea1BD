@@ -1,7 +1,9 @@
 body
 {
 	background-image:url("../img/fondo2");	
-
+        background-repeat : no-repeat; 
+        background-position : center; 
+        background-attachment : fixed; 
   	background-size: 100%;
 }
 #content
@@ -19,11 +21,16 @@ body
 {
 	color: white;
 }
-.producto
+#producto1
 {
 	margin-left: 7px;
 	margin-top: 70px;
-	display: inline-block;
+
+}
+
+.producto
+{
+	margin-top: 30px;
 }
 
 .cantidad
@@ -42,9 +49,8 @@ body
 
 .submits
 {
-	display: inline-block;
-	margin-top: 50px;
-	margin-left: -170px;
+	margin-top: 10px;
+	margin-left: -30px;
 	position: absolute;
-	clear: fixed;
+        clear-fix: both;
 }

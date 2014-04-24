@@ -46,9 +46,9 @@
                         $('#form').append("Producto "+i+":");
                         $('#form').append($("#producto1").clone().attr("name","producto"+i).attr("id","producto"+i));
                         $('#form').append('<br />');
-                        $('#form').append('Nueva cantidad: <input type="text" class = "cantidad" name="cantidad'+i+'" id="cantidad"/>');
+                        $('#form').append('Cantidad: <input type="text" class = "cantidad" name="cantidad'+i+'" id="cantidad"/>');
                         $('#form').append('<br />');
-                        $('#form').append('Nuevo precio: <input type="text" class = "precio" name="precio'+i+'" placeholder="Precio"/>');
+                        $('#form').append('Precio: <input type="text" class = "precio" name="precio'+i+'" placeholder="Precio"/>');
                         $('#form').append('<br />');
                         $('#form').append($('.submits'));
                         $('#np').attr("value", i);
@@ -63,6 +63,7 @@
 	<body>
 		<div id="content">
 			<form style="text-align:center;" id="form" action="../../ingresarCompra" method="post">
+                               
 				Producto: <select  class = "producto" name ="producto1" id="producto1">
                                             <option selected></option>
                                             <%=htmlProductos%>

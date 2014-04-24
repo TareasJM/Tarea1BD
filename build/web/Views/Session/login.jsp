@@ -19,9 +19,9 @@
 			%>
 			<form action="../../Controllers/Session/loginform.jsp" class = "login" method="POST">
 	
-                                Usuario:  <input type="text" class = "usuario" name="user" placeholder="Usuario">
+                                Usuario:  <input type="text" class = "usuario" name="user" placeholder="   Usuario">
 				<br />
-				Password: <input type="password" class = "pass" name="pass" placeholder="Password" />
+				Password: <input type="password" class = "pass" name="pass" placeholder="   Password" />
 				<input type="submit" class = "submits" value="Submit" />
 			</form>
 		</div>
