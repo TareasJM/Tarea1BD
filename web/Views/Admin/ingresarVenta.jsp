@@ -55,7 +55,7 @@
                         $('#form').append("Producto "+i+":");
                         $('#form').append($("#producto1").clone().attr("name","producto"+i).attr("id","producto"+i));
                         $('#form').append('<br />');
-                        $('#form').append('Cantidad: <input type="text" class = "cantidad" name="cantidad'+i+'" id="cantidad"/>');
+                        $('#form').append('Cantidad: <input type="text" class = "cantidad" name="cantidad'+i+'" id="cantidad'+i+'"/>');
                         $('#form').append('<br />');
                         $('#form').append($('.submits'));
                         $('#np').attr("value", i);
@@ -65,19 +65,39 @@
                             $( "#botonAdd" ).hide();
                         }
                     };
-                    function test() {
-                        var n = 0;
-                        $(".producto").each(function() {
-                            n++;
+
+                    function doAjaxPost() {
+                        // get the form values
+                        var vendedor = $('#vendedor').val();
+                        var cliente = $('#cliente').val();
+                        var np = $('#np').val();
+
+                        var dataString = "vendedor="+vendedor+"&cliente="+cliente+"&np="+np;
+                        for(var j=1;j<=np;j++){
+                            dataString = dataString + "&producto"+j+"="+$('#producto'+j).val();
+                            dataString = dataString + "&cantidad"+j+"="+$('#cantidad'+j).val();
+                        }
+
+                        alert(dataString);
+
+                        $.ajax({
+                            type: "POST",
+                            url: "../../IV",
+                            data: dataString,
+                            success: function(response){
+                                $('#response').html(response);
+                            },
+                            error: function(e){
+                                alert('Error: ' + e);
+                            }
                         });
-                        window.alert("n="+n);
                     };
                 </SCRIPT>
 	</head>
 	<body>
 		<div id="content">
 			<form style="text-align:center;" action="../../IV" method="POST" id="form">
-				Cliente: <select  class="cliente" name="cliente">
+				Cliente: <select  class="cliente" name="cliente" id="cliente">
                                             <%=htmlClientes%>
                                          </select> 
 				<br />
@@ -89,11 +109,13 @@
 				<br />
 				Cantidad: <input type="text" class = "cantidad" name="cantidad1" id="cantidad1"/>
                                 <br/>
-                                <input type="hidden" name ="vendedor" value="<%=session.getAttribute("userID")%>"/>
+                                <input type="hidden" name ="vendedor" id="vendedor" value="<%=session.getAttribute("userID")%>"/>
                                 <input type="hidden" name ="np" value="1" id="np"/>
                                 <input type="submit" class = "submits" value="Finalizar" />
 			</form>
                         <button id="botonAdd"class="boton" onclick="add()">+Productos</button>
+                        <input type="button" value="ajaxSubmit" onclick="doAjaxPost()">
+                        <div id="response"></div>
                     
 		</div>
 	</body>

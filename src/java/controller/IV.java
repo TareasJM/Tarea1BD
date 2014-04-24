@@ -72,14 +72,11 @@ public class IV extends HttpServlet {
                 int precio = cantidad*producto.getPrecio();
                 montoTotal += precio;
                 dicCantidad.put(nombre, cantidad);
-                JOptionPane.showMessageDialog(null, "no funciona la n = " + dicStock.get(nombre));
                 Integer n = (Integer)dicStock.get(nombre);
                 n = n - (Integer)cantidad;
                     
-                while (n<0) {
-                    n = (Integer)dicStock.get(nombre);
-                    int cantidad2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese una cantidad menor a " + cantidad+1));
-                    n = n - cantidad2;
+                if (n<0) {
+                    response.sendError(1);
                 }
 
                 dicStock.remove(nombre);
@@ -91,11 +88,13 @@ public class IV extends HttpServlet {
             //String cantidad = request.getParameter("cantidad").toUpperCase();   
             //pro = pro.getProducto(producto);
             int id_venta = ventas.addVenta(cliente, vendedor, montoTotal,dma,hms);
-            
+                        JOptionPane.showMessageDialog(null,"idventa");
+
             for ( String key : dicCantidad.keySet() ) {
                 producto = producto.getProducto(key);
                 ventas.addDVenta(id_venta, producto.getId_producto(), dicCantidad.get(key));
             }
+                        JOptionPane.showMessageDialog(null,"for");
 
             JOptionPane.showMessageDialog(null,"Venta OK, monto total: "+montoTotal);
             
