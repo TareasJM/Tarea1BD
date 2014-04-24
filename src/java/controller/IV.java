@@ -76,16 +76,15 @@ public class IV extends HttpServlet {
                 Integer n = (Integer)dicStock.get(nombre);
                 n = n - (Integer)cantidad;
                     
-                if (n<0) {
-                    JOptionPane.showMessageDialog(null,nombre + "no alcanza");
-                    response.sendRedirect("Views/Admin/ingresarVenta.jsp");
-                    return;
+                while (n<0) {
+                    n = (Integer)dicStock.get(nombre);
+                    int cantidad2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese una cantidad menor a " + cantidad+1));
+                    n = n - cantidad2;
                 }
 
                 dicStock.remove(nombre);
-                JOptionPane.showMessageDialog(null, "no funciona la wea9for");
                 dicStock.put(nombre, n);
-                JOptionPane.showMessageDialog(null, "no funciona la wea10for");
+                
             }
             
             //String producto = request.getParameter("producto").toUpperCase();

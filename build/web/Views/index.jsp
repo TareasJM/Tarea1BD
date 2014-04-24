@@ -28,17 +28,18 @@
                                 {       
 
                                             %>
-                                                    <h2 style="text-align:center;">Bienvenido Administrador</h2>
-                                                    <h3 style="text-align:center;">Controles</h3>
+                                                    <h2 style="text-align:center;">Bienvenido <%=session.getAttribute("userName")%></h2>
+                                                    <h3 style="text-align:center;">Controles Administrador</h3>
                                                     <ul>    
 
                                                             <li> <a href="Admin/ingresarVendedor.jsp"> Ingresar Vendedor </a> </li>
                                                             <li> <a href="Admin/ingresarCliente.jsp"> Ingresar Cliente </a> </li>
+                                                            <li> <a href="Admin/agregarProductos.jsp"> Agregar Productos </a> </li>
                                                             <li> <a href="Admin/administrarProductos.jsp"> Administrar Productos </a> </li>
                                                             <li> <a href="Admin/ingresarCompra.jsp"> Ingresar Comprar </a> </li>
                                                             <li> <a href="Admin/ingresarVenta.jsp"> Ingresar Venta </a> </li>
+                                                            <li> <a href="Vendedor/misVentas.jsp"> Mis Ventas</a> </li>
                                                             <li> <a href="Admin/listClientes.jsp"> Ver Ventas a Cliente </a> </li>
-                                                            <li> <a href="Admin/agregarProductos.jsp"> Agregar Productos </a> </li>
                                                             <li> <a href="../Controllers/Session/logout.jsp">Cerrar Sesión </a> </li>
                                                             
                                                             
@@ -52,8 +53,8 @@
                                     {       
 
                                             %>
-                                                    <h2 style="text-align:center;">Bienvenido Vendedor</h2>
-                                                    <h3 style="text-align:center;">Controles</h3>
+                                            <h2 style="text-align:center;">Bienvenido <%=session.getAttribute("userName")%> </h2>
+                                                    <h3 style="text-align:center;">Controles Vendedor</h3>
                                                     <ul>
                                                             <li> <a href="Admin/ingresarCliente.jsp"> Ingresar Cliente </a> </li>
                                                             <li> <a href="Admin/ingresarVenta.jsp"> Ingresar Venta </a> </li>
