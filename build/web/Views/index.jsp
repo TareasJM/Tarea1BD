@@ -39,7 +39,6 @@
                                                             <li> <a href="Admin/ingresarVenta.jsp"> Ingresar Venta </a> </li>
                                                             <li> <a href="Admin/listClientes.jsp"> Ver Ventas a Cliente </a> </li>
                                                             <li> <a href="Admin/agregarProductos.jsp"> Agregar Productos </a> </li>
-                                                            <li><a  href="Session/ingresarUsuario.jsp">Ingresar Usuario</a></li>
                                                             <li> <a href="../Controllers/Session/logout.jsp">Cerrar Sesión </a> </li>
                                                             
                                                             

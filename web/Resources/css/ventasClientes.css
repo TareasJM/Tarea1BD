@@ -1,0 +1,147 @@
+body
+{
+	background-image:url("../img/fondo2");	
+
+  	background-size: 100%;
+}
+
+.tabla1
+{   
+    margin-top:200px;
+    float:left;
+}
+.tabla2
+{
+  border-color: white;  
+  position: absolute;
+  margin-left:135px;
+  
+}
+.tabla3
+{
+  border-color: white;  
+  margin-left:150px; 
+}
+.clearfix 
+{ 	
+   clear: both;
+}	
+.t1
+{
+    text-align: center;
+   
+}
+td
+{
+
+    color: white;
+}
+.uno
+{   
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.dos
+{
+    margin-left: 35px;
+    margin-top:-10px;
+    color:white;
+    position:absolute;
+
+}
+.tres
+{
+    margin-left: 10px;
+    text-decoration: none;
+    color:white;
+}
+.tres:hover
+{
+    font-size: 15px;
+}
+.tres:visited
+{
+    font-size: 15px;
+}
+.cuatro:hover
+{
+    font-size: 15px;
+    
+}
+.cuatro:visited
+{
+    font-size: 15px;
+}
+.cuatro
+{
+    margin-left: 35px;
+    margin-top: 12px;
+    position: absolute;
+    text-decoration: none; 
+    color:white;
+}
+.cinco
+{
+    margin-left: 5px;
+    margin-top: 5px;
+    position: absolute;
+    text-decoration: none; 
+    color:white;
+}
+
+.cinco:hover
+{
+    font-size: 15px;
+    
+}
+.cinco:visited
+{
+    font-size: 15px;
+}
+.seis
+{
+    margin-left: 8px;
+    margin-top: 10px;
+    position: absolute;
+    text-decoration: none; 
+    color:white;
+}
+
+.seis:hover
+{
+    font-size: 15px;
+    
+}
+.seis:visited
+{
+    font-size: 15px;
+}
+.list:hover
+{
+    font-size: 15px;
+    
+}
+.list:visited
+{
+    font-size: 15px;
+}
+.list
+{
+    text-align: center;
+    text-decoration: none;
+    color:white;
+    background: transparent;
+    border:none;
+    cursor: pointer; 
+}
+
+.submits
+{
+	display: inline-block;
+	margin-top: 50px;
+	margin-left: -250px;
+	position: absolute;
+	clear: fixed;
+}

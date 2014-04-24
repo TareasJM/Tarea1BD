@@ -179,7 +179,7 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
         }
         catch(Exception ev)
         {
-            sql="update productos set nombre =?, precio=?, categoria=?, descripcion=?, stock=? where id_producto=?";
+            sql="update productos set producto =?, precio=?, categoria=?, descripcion=?, stock=? where id_producto=?";
             try
             {
             Class.forName(classfor);
@@ -303,7 +303,7 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
     
      public Map getStocks()
     {
-         Map<String,Integer> dic = new HashMap<String,Integer>();
+        Map<String,Integer> dic = new HashMap<String,Integer>();
         String sql="SELECT * FROM productos order by id_producto";
         try{
             Class.forName(classfor);
@@ -312,7 +312,7 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
             rs=pr.executeQuery();
             while(rs.next()){
                 
-                dic.put(rs.getString("nombre"),(Integer)rs.getInt("stock"));
+                dic.put(rs.getString("producto"),(Integer)rs.getInt("stock"));
 
             }
         }catch(Exception ex){
@@ -530,7 +530,7 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
         }
         catch(Exception ev)
         {
-            sql="update dventa set id_venta =?, id_detalle=?, cantidad=? where id_producto=?";
+            sql="update dventa set id_venta2 =?, id_detalle=?, cantidad=? where id_producto2=?";
             try
             {
             Class.forName(classfor);
@@ -549,4 +549,5 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
     }//addDVENTA
     
     
+  
 }//basedatos

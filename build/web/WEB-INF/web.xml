@@ -56,6 +56,10 @@
         <servlet-name>prueba</servlet-name>
         <servlet-class>controller.ingresarVenta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>IV</servlet-name>
+        <servlet-class>controller.IV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
         <url-pattern>/insertVendedor</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>prueba</servlet-name>
         <url-pattern>/prueba</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IV</servlet-name>
+        <url-pattern>/IV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -103,7 +103,7 @@ public class producto
             {
                 producto pro =new producto();
                 pro.setId_producto(rs.getInt("id_producto"));
-                pro.setNombre(rs.getString("nombre"));
+                pro.setNombre(rs.getString("producto"));
                 pro.setStock(rs.getInt("stock"));
                 pro.setCategoria(rs.getString("categoria"));
                 pro.setDescripcion(rs.getString("descripcion"));
@@ -134,7 +134,7 @@ public class producto
    public void editProducto(int id,int cantidad,String nombre,String descripcion,
            String categoria, int precio)
     {
-        String sql="UPDATE productos set nombre ='"+nombre+"', stock='"+cantidad +"', categoria='"
+        String sql="UPDATE productos set producto ='"+nombre+"', stock='"+cantidad +"', categoria='"
                 + categoria +"', descripcion='"+descripcion+"', precio='"+precio+"' where id_producto ='"+id+"'";
                 
         try
@@ -235,7 +235,7 @@ public class producto
     public producto getProducto(String nombre)
     {
         producto pro = new producto();
-        String sql="SELECT * FROM productos where nombre = '"+nombre+"'";
+        String sql="SELECT * FROM productos where producto = '"+nombre+"'";
         try{
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario,clave);
@@ -248,7 +248,7 @@ public class producto
                 pro.setDescripcion(rs.getString("descripcion"));
                 pro.setCategoria(rs.getString("categoria"));
                 pro.setPrecio(rs.getInt("precio"));
-                pro.setNombre(rs.getString("nombre"));
+                pro.setNombre(rs.getString("producto"));
             }
         }catch(Exception ex){
             ex.printStackTrace();
@@ -280,7 +280,7 @@ public class producto
                 pro.setDescripcion(rs.getString("descripcion"));
                 pro.setCategoria(rs.getString("categoria"));
                 pro.setPrecio(rs.getInt("precio"));
-                pro.setNombre(rs.getString("nombre"));
+                pro.setNombre(rs.getString("producto"));
             }
         }catch(Exception ex){
             ex.printStackTrace();

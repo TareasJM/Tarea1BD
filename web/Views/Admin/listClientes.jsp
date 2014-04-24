@@ -24,6 +24,7 @@
                         </br>
                         <a href ="../index.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form>
+                    <form action="ventasCliente.jsp">
                     <table width="50%" class="tabla3" border="1"> 
                             <tr>
                                 <td style="width:250px; text-align:top-center;" ><h2 class ="t1">Nombre</h2></td> 
@@ -33,12 +34,12 @@
                                     for(cliente temp: clien.showCliente()){
                                 %>
                             <tr>
-                                <td ><a name="nombre" href ="editarProducto2.jsp"  class="list"><p text-align="center" class ="uno" name="nombre"><%= temp.getNombre()%></p></a></td> 
+                                <td ><p text-align="center" class ="uno"><input name ="buscar" type="submit" class="list" value="<%= temp.getNombre()%>"></p></td> 
                             </tr>    
                                 
                                <%}%>
                    </table>
-                   
+                    </form>
                    
 		</div>
 	</body>

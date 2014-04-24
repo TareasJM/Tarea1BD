@@ -76,7 +76,7 @@
 	</head>
 	<body>
 		<div id="content">
-			<form style="text-align:center;" action="../../prueba" method="POST" id="form">
+			<form style="text-align:center;" action="../../IV" method="POST" id="form">
 				Cliente: <select  class="cliente" name="cliente">
                                             <%=htmlClientes%>
                                          </select> 
