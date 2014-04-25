@@ -36,7 +36,7 @@
                                                             <li> <a href="Admin/ingresarCliente.jsp"> Ingresar Cliente </a> </li>
                                                             <li> <a href="Admin/agregarProductos.jsp"> Agregar Productos </a> </li>
                                                             <li> <a href="Admin/administrarProductos.jsp"> Administrar Productos </a> </li>
-                                                            <li> <a href="Admin/ingresarCompra.jsp"> Ingresar Comprar </a> </li>
+                                                            <li> <a href="Admin/ingresarCompra.jsp"> Ingresar Compra </a> </li>
                                                             <li> <a href="Admin/ingresarVenta.jsp"> Ingresar Venta </a> </li>
                                                             <li> <a href="Vendedor/misVentas.jsp"> Mis Ventas</a> </li>
                                                             <li> <a href="Admin/listClientes.jsp"> Ver Ventas a Cliente </a> </li>

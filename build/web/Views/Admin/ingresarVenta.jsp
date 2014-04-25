@@ -17,7 +17,7 @@
     String htmlClientes = "";
     for(cliente temp: user.showCliente())
     {
-        htmlClientes+= "<option class = \"cliente\" value=\"" + temp.getRut() + "\">"+ temp.getNombre() +"</option>\n";
+        htmlClientes+= "<option class = \"cliente\" value=\"" + temp.getNombre()+"!"+temp.getRut() + "\">"+ temp.getNombre() +"</option>\n";
     }
     String htmlProductos = "";
     int np = 0;
@@ -69,26 +69,39 @@
                     function doAjaxPost() {
                         // get the form values
                         var vendedor = $('#vendedor').val();
+                        var idvendedor = $('#idvendedor').val();
                         var cliente = $('#cliente').val();
                         var np = $('#np').val();
 
-                        var dataString = "vendedor="+vendedor+"&cliente="+cliente+"&np="+np;
+                        var dataString = "vendedor="+vendedor+"&idvendedor="+idvendedor+"&cliente="+cliente+"&np="+np;
                         for(var j=1;j<=np;j++){
                             dataString = dataString + "&producto"+j+"="+$('#producto'+j).val();
                             dataString = dataString + "&cantidad"+j+"="+$('#cantidad'+j).val();
                         }
-
-                        alert(dataString);
 
                         $.ajax({
                             type: "POST",
                             url: "../../IV",
                             data: dataString,
                             success: function(response){
-                                $('#response').html(response);
+                                if(response.indexOf("Venta")>-1){
+                                    alert(response);
+                                    window.location.href ="../index.jsp";
+                                }else{
+                                    $(".cantidad").each(function(){
+                                            $(this).css("border", "solid 3px green");
+                                    });
+                                    var split = response.split("-");
+                                    for(var i = 0; i<split.length-1; i++){
+                                        alert('Error: Cantidad sobrepasa stock de '+$('#producto'+split[i]).val());
+                                        $('#cantidad'+split[i]).css("border", "solid 3px red");
+                                    }
+                                }
                             },
                             error: function(e){
-                                alert('Error: ' + e);
+                                alert('Error: '+session.getAttribute("ERROR"));
+                                //alert('Error: Cantidad sobrepasa stock de '+$('#producto'+e).val());
+                                //$('#cantidad'+e).css("background-color", "red");
                             }
                         });
                     };
@@ -109,12 +122,11 @@
 				<br />
 				Cantidad: <input type="text" class = "cantidad" name="cantidad1" id="cantidad1"/>
                                 <br/>
-                                <input type="hidden" name ="vendedor" id="vendedor" value="<%=session.getAttribute("userID")%>"/>
+                                <input type="hidden" name ="vendedor" id="vendedor" value="<%=session.getAttribute("userName")%>!<%=session.getAttribute("userID")%>"/>
                                 <input type="hidden" name ="np" value="1" id="np"/>
-                                <input type="submit" class = "submits" value="Finalizar" />
+                                <input type="button" class = "submits" onclick="doAjaxPost()" value="Finalizar" />
 			</form>
                         <button id="botonAdd"class="boton" onclick="add()">+Productos</button>
-                        <input type="button" value="ajaxSubmit" onclick="doAjaxPost()">
                         <div id="response"></div>
                     
 		</div>
