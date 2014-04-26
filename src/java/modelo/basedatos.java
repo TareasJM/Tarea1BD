@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -79,7 +78,6 @@ public class basedatos
             if (rs.next() == false)
             {
                 id_compra = 1;
-                JOptionPane.showMessageDialog(null,"ID = 1");
 
             }
             else
@@ -97,7 +95,6 @@ public class basedatos
         }
         catch(Exception ev)
         {
-            JOptionPane.showMessageDialog(null,"catch");
         }
 
         return id_compra;
@@ -115,8 +112,6 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
             rs=pr.executeQuery();
             if (rs.next() == false)
             {
-                JOptionPane.showMessageDialog(null,"ID=1");
-
                 id_detalle = 1;
             }
             else
@@ -138,7 +133,6 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
         }
         catch(Exception ev)
         {
-            JOptionPane.showMessageDialog(null,"catch D");
         }
 
         return id_compra;
@@ -159,7 +153,6 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
             rs=pr.executeQuery();
             if (rs.next() == false)
             {
-                JOptionPane.showMessageDialog(null,"falseVenta");
                 id_producto = 1;
             }
             else
@@ -378,76 +371,7 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
         }
     } //elimiar producto
     
-    public void addDetalleVenta(int id_producto,int cantidad)
-    {     
-        int id_venta = 0;
-        int id_detalle = 0;
-        String sql="SELECT id_venta FROM ventas order by id_venta DESC";
-        try
-        {
-            Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario,clave);
-            pr=con.prepareStatement(sql);
-            rs=pr.executeQuery();
-            if (rs.next() == false)
-            {
-                JOptionPane.showMessageDialog(null,"falseDetalleVenta");
-                id_venta = 1;
-            }
-            else
-            {
-                id_venta = rs.getInt("id_venta")+1;
-            }
-            sql="SELECT id_detalle FROM dventa order by id_detalle DESC";
-            pr=con.prepareStatement(sql);
-            rs=pr.executeQuery();
-            if (rs.next() == false)
-            {
-                JOptionPane.showMessageDialog(null,"falseDetalleVenta");
-                id_detalle = 1;
-            }
-            else
-            {
-                id_detalle = rs.getInt("id_detalle")+1;
-
-            }
-            sql="Insert into dventa values(?,?,?,?)";
-           
-            pr=con.prepareStatement(sql);
-            pr.setInt(1, id_detalle);
-            JOptionPane.showMessageDialog(null,"id_detalle = "+id_detalle);
-            pr.setInt(2, id_venta);   
-            JOptionPane.showMessageDialog(null,"id_venta = "+id_venta);
-            pr.setInt(3, id_producto);   
-            JOptionPane.showMessageDialog(null,"id_producto = "+id_producto);
-            pr.setInt(4, cantidad);
-            JOptionPane.showMessageDialog(null,"cantidad = "+cantidad);
-            JOptionPane.showMessageDialog(null,"ANTES EXECUTE");
-            
-            pr.executeUpdate();
-            JOptionPane.showMessageDialog(null,"DPS EXECUTE");
-            
-
-        }
-        catch(Exception ev)
-        {
-            sql="update dventa set id_venta=?, id_detalle=?, cantidad =? where id_producto=?";
-            try
-            {
-            Class.forName(classfor);
-            con=DriverManager.getConnection(url, usuario, clave);
-            pr=con.prepareStatement(sql);
-            pr.setInt(1, cantidad);
-            pr.setInt(2, id_producto);   
-            pr.setInt(3, id_venta);   
-            pr.setInt(4, id_detalle);   
-            pr.executeUpdate();
-            
-            }
-            catch(Exception e)
-            {}
-        }
-    }//addDetalleVenta
+  
     
     public int addVenta(String rutC, String rutV,
                              int monto, String fecha, String hora) 
@@ -549,5 +473,62 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
     }//addDVENTA
     
     
-  
+    public void deleteAll()
+      {
+       String[] tablas= {"DVENTA","DCOMPRAS","VENTAS","COMPRAS","PRODUCTOS","CLIENTES"};
+       String[] tablas2= {"ID_DETALLE","ID_COMPRA","ID_CLIENTE","ID_COMPRA","ID_PRODUCTO","ID_CLIENTE"};
+       for(int i = 0; i<6; i++){
+   
+           String sql="DELETE FROM " +tablas[i] +" "+ tablas2[i]; //elimina todos los elementos de la tabla
+            try{
+                Class.forName(classfor);
+                con=DriverManager.getConnection(url, usuario,clave);
+                pr=con.prepareStatement(sql);
+                pr.executeUpdate();
+
+            }
+            catch(Exception ex)
+            {}
+            finally
+            {
+                try
+                {
+                    pr.close();
+                    con.close();
+                }
+                catch(Exception ex)
+                {}
+            }
+        }
+      }//ELIMINA TODO
+ 
+    public void insertAll()
+      {
+       String[] tablas= {"DVENTA","DCOMPRAS","VENTAS","COMPRAS","PRODUCTOS"};
+       String[] tablas2= {"ID_DETALLE","ID_COMPRA","ID_CLIENTE","ID_COMPRA","ID_PRODUCTO"};
+       for(int i = 0; i<5; i++){
+   
+           String sql="DELETE FROM " +tablas[i] +" "+ tablas2[i]; //elimina todos los elementos de la tabla
+            try{
+                Class.forName(classfor);
+                con=DriverManager.getConnection(url, usuario,clave);
+                pr=con.prepareStatement(sql);
+                pr.executeUpdate();
+
+            }
+            catch(Exception ex)
+            {}
+            finally
+            {
+                try
+                {
+                    pr.close();
+                    con.close();
+                }
+                catch(Exception ex)
+                {}
+            }
+        }
+      }//AGREGA PRODUCTOS Y CLIENTES
+    
 }//basedatos

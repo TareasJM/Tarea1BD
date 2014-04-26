@@ -55,7 +55,7 @@ public class IV extends HttpServlet {
             int minuto = fecha.get(Calendar.MINUTE);
             int segundo = fecha.get(Calendar.SECOND);
             String dma = dia+"/"+mes+"/"+año;
-            String hms = hora+":"+((minuto+"").length()==2 ? minuto : "0"+minuto)+":"+((segundo+"").length()==2 ? segundo : "0"+segundo);
+            String hms = hora+":"+(minuto < 10 ? "0"+minuto : minuto)+":"+(segundo < 10 ? "0"+segundo : segundo);
             
             basedatos ventas = new basedatos();
             int np = Integer.parseInt(request.getParameter("np"));

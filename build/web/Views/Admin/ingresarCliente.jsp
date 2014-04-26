@@ -11,7 +11,12 @@
 	<head>
 		<link href="../../Resources/css/vendedor.css" rel="stylesheet" type="text/css">
 	</head>
-	<body>
+	<body>  
+             <div id ="toolbar" style="position: fixed">
+                 <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+                 <div style="color:white" id="toolbarType">Cargo: <%=session.getAttribute("userType")%></div>
+                 <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+             </div>
 		<div id="content">
 			<form style ="text-align:center;"action="../../ingresarCliente" method="POST">
 				Rut: <input type="text" class = "rut" name="rut" placeholder="Rut">

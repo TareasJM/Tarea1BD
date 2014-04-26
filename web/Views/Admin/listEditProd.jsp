@@ -26,7 +26,7 @@
                     <form action ="editarProducto.jsp">
                     <table width="50%" class="tabla3" border="1"> 
                             <tr>
-                                <td style="width:250px; text-align:top-center;" ><h2 class ="t1">Nombre</h2></td> 
+                                <td style="width:250px; text-align:top-center;" ><h2 class ="t1">Producto</h2></td> 
                             </tr>
                                 <%
                                     producto prod =new producto();

@@ -6,21 +6,18 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 import modelo.basedatos;
-import modelo.producto;
 
 /**
  *
  * @author salinas
  */
-public class ingresarCompra extends HttpServlet {
+public class Freezer extends HttpServlet {
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,42 +32,19 @@ public class ingresarCompra extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
 
-            Calendar fecha = new GregorianCalendar();
-
-            int año = fecha.get(Calendar.YEAR);
-            int mes = fecha.get(Calendar.MONTH)+1;
-            int dia = fecha.get(Calendar.DAY_OF_MONTH);
-            int hora = fecha.get(Calendar.HOUR_OF_DAY);
-            int minuto = fecha.get(Calendar.MINUTE);
-            int segundo = fecha.get(Calendar.SECOND);
-            String dma = dia+"/"+mes+"/"+año;
-            String hms = hora+":"+(minuto < 10 ? "0"+minuto : minuto)+":"+(segundo < 10 ? "0"+segundo : segundo);
-            
-            basedatos producto = new basedatos();
-            int np = Integer.parseInt(request.getParameter("np"));
-            int monto = 0;
-            for (int i=1;i<=np;i++)
+            if(JOptionPane.showConfirmDialog(null, "Estas Seguro?")==0)
             {
-                int cantidad = Integer.parseInt(request.getParameter("cantidad"+i));
-                int precio = Integer.parseInt(request.getParameter("precio"+i));
-                monto += cantidad*precio;
+            basedatos delete = new basedatos();
+            delete.deleteAll();
+            JOptionPane.showMessageDialog(null,"Datos borrados exitosamente");
             }
-            int id_compra = producto.insertCompra(monto,dma,hms);
-
-            for (int i=1;i<=np;i++)
+            else
             {
-                int id_producto = Integer.parseInt(request.getParameter("producto"+i));
-                int cantidad = Integer.parseInt(request.getParameter("cantidad"+i));
-                int precio = Integer.parseInt(request.getParameter("precio"+i));
-                producto.insertDCompra(id_compra, id_producto, cantidad, precio);
+                JOptionPane.showMessageDialog(null,"No estas seguro");
             }
+               response.sendRedirect("Views/index.jsp");
             
-            JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
-            response.sendRedirect("Views/index.jsp");
-            
-            
-        } finally 
-        {            
+        } finally {            
             out.close();
         }
     }

@@ -38,7 +38,7 @@
                                 <td ><p class="uno"><%= temp.getId_detalle()%></p></td> 
                                 <td ><p class="uno"><%= temp.getProducto()%></p></td> 
                                 <td ><p class="uno"><%= temp.getUser()%></p></td> 
-                                <td ><p class="uno"><%= temp.getRut()%></p></td>
+                                <td ><p class="uno"><%= temp.getCantidad()%></p></td>
                             </tr>       
                                 
                                <%}%>

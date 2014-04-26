@@ -19,12 +19,25 @@
     {
         htmlClientes+= "<option class = \"cliente\" value=\"" + temp.getNombre()+"!"+temp.getRut() + "\">"+ temp.getNombre() +"</option>\n";
     }
+    if (htmlClientes.equals("")){
+        JOptionPane.showMessageDialog(null,"No existen Clientes");
+        response.sendRedirect("ingresarCliente.jsp");
+        return;
+    }
     String htmlProductos = "";
     int np = 0;
     for(producto temp: prod.showProducto())
     {
+        if(temp.getStock() == 0)
+        {
+            continue;
+        }                          
         np++;
         htmlProductos+="<option value= \""+temp.getNombre()+"\">"+temp.getNombre()+"</option>\n";
+    }
+    if (htmlProductos.equals("")){
+        JOptionPane.showMessageDialog(null,"No existen Productos");
+        response.sendRedirect("agregarProductos.jsp");
     }
     
 %>
@@ -34,7 +47,11 @@
                 <script type=""  src="http://code.jquery.com/jquery-latest.js"></script>
                 <SCRIPT type="text/javascript"  language="javascript">
                     var i=2;
-                    
+                    $(document).ready(function(){
+                        if (<%=np%> == 1 ){
+                            $( "#botonAdd" ).hide();
+                        }
+                    });
                     $(document).delegate(".producto", "change", function(){
                         var selected = new Array();
                         $(".producto").each(function(){
@@ -45,7 +62,9 @@
                             var option = $(this);
                             selected.forEach(function(select)
                             {
-                                option.find('option[value=' + select +']').hide();
+                                if (select !="value"){
+                                    option.find('option[value=' + select +']').hide();
+                                }
                             });
                         });
 
@@ -72,12 +91,26 @@
                         var idvendedor = $('#idvendedor').val();
                         var cliente = $('#cliente').val();
                         var np = $('#np').val();
+                        var saltados = 0;
 
-                        var dataString = "vendedor="+vendedor+"&idvendedor="+idvendedor+"&cliente="+cliente+"&np="+np;
+                        var dataString = "vendedor="+vendedor+"&idvendedor="+idvendedor+"&cliente="+cliente;
                         for(var j=1;j<=np;j++){
-                            dataString = dataString + "&producto"+j+"="+$('#producto'+j).val();
-                            dataString = dataString + "&cantidad"+j+"="+$('#cantidad'+j).val();
+                    
+                            if ($('#producto'+j).val()=="value"){
+                                saltados++;
+                                continue;
+                            }
+                            else if($('#cantidad'+j).val() < 1 || $('#cantidad'+j).val() > 9999999 ){
+                                alert("Error: cantidad de "+$('#producto'+j).val()+" no permitida");
+                                $('#cantidad'+j).css("border", "solid 3px red");
+                                return;
+                            
+                            }
+                            dataString = dataString + "&producto"+(j-saltados)+"="+$('#producto'+j).val();
+                            dataString = dataString + "&cantidad"+(j-saltados)+"="+$('#cantidad'+j).val();
                         }
+                        
+                        dataString+="&np="+(np-saltados);
 
                         $.ajax({
                             type: "POST",
@@ -99,9 +132,7 @@
                                 }
                             },
                             error: function(e){
-                                alert('Error: '+session.getAttribute("ERROR"));
-                                //alert('Error: Cantidad sobrepasa stock de '+$('#producto'+e).val());
-                                //$('#cantidad'+e).css("background-color", "red");
+                                
                             }
                         });
                     };
@@ -116,7 +147,8 @@
 				<br />
                                 
 				Producto: <select  class = "producto" name ="producto1" id="producto1">
-                                            <option selected></option>
+                                            <option value="value" selected>Seleccione un producto</option>
+                                            
                                             <%=htmlProductos%>
                                           </select>
 				<br />

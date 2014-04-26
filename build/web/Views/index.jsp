@@ -9,6 +9,11 @@
 
  </head> 
  <body > 
+     <div id ="toolbar" style="position: fixed">
+         <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+         <div style="color:white" id="toolbarType">Cargo: <%=session.getAttribute("userType")%></div>
+         <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+     </div>
  	<div id="content">
  		<div id="optionsMenu" style="height: 40%;">
 			<% 
@@ -40,6 +45,7 @@
                                                             <li> <a href="Admin/ingresarVenta.jsp"> Ingresar Venta </a> </li>
                                                             <li> <a href="Vendedor/misVentas.jsp"> Mis Ventas</a> </li>
                                                             <li> <a href="Admin/listClientes.jsp"> Ver Ventas a Cliente </a> </li>
+                                                            <li> <a href="../Freezer"> Freezer </a> </li>
                                                             <li> <a href="../Controllers/Session/logout.jsp">Cerrar Sesión </a> </li>
                                                             
                                                             

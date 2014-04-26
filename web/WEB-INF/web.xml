@@ -60,6 +60,10 @@
         <servlet-name>IV</servlet-name>
         <servlet-class>controller.IV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Freezer</servlet-name>
+        <servlet-class>controller.Freezer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>insertVendedor</servlet-name>
         <url-pattern>/insertVendedor</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>IV</servlet-name>
         <url-pattern>/IV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Freezer</servlet-name>
+        <url-pattern>/Freezer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

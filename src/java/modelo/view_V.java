@@ -18,6 +18,7 @@ public class view_V {
     
     public int id_venta;
     public int id_detalle;
+    public int cantidad;
     public String producto;
     public String user;
     public String rut;
@@ -61,6 +62,14 @@ public class view_V {
     public void setUser(String usuario) {
         this.usuario = usuario;
     }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
      
     private String classfor="oracle.jdbc.driver.OracleDriver";
     private String url="jdbc:oracle:thin:@localhost:1521:XE";
@@ -89,6 +98,7 @@ public class view_V {
                 vc.setId_venta(rs.getInt("ID_VENTA"));
                 vc.setId_detalle(rs.getInt("ID_DETALLE"));
                 vc.setProducto(rs.getString("PRODUCTO"));
+                vc.setCantidad(rs.getInt("CANTIDAD"));
                 vc.setUser(rs.getString("NOMBRE"));
                 vc.setRut(rs.getString("RUT"));
                 vecPro.add(vc);

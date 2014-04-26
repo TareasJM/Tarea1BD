@@ -18,6 +18,10 @@
         np++;
         htmlProductos+="<option value= \""+temp.getId_producto()+"\">"+temp.getNombre()+"</option>\n";
     }
+    if (htmlProductos.equals("")){
+        JOptionPane.showMessageDialog(null,"No existen Productos");
+        response.sendRedirect("agregarProductos.jsp");
+    }
  %>
 <html>
 	<head>
@@ -25,6 +29,12 @@
                   <script type=""  src="http://code.jquery.com/jquery-latest.js"></script>
                 <SCRIPT type="text/javascript"  language="javascript">
                     var i=2;
+                    
+                    $(document).ready(function(){
+                        if (<%=np%> == 1 ){
+                            $( "#botonAdd" ).hide();
+                        }
+                    });
                     
                     $(document).delegate(".producto", "change", function(){
                         var selected = new Array();
