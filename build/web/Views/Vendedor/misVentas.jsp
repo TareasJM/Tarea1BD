@@ -16,6 +16,11 @@
 		<link href="../../Resources/css/ventasClientes.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+            <div id ="toolbar" style="position: fixed">
+                 <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+                 
+                 <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+             </div>
 		<div id="content">
                     <form  with =" 10%" class="tabla1" border="1">
                         <a href ="../index.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
@@ -26,7 +31,7 @@
                                 <td style="width:250px; text-align:top;"><h2 class ="t1">Venta</h2></td>
                                 <td style="width:250px; text-align:top;"><h2 class ="t1">Detalle</h2></td>
                                 <td style="width:250px; text-align:top;" ><h2 class ="t1">Producto</h2></td> 
-                                <td style="width:250px; text-align:top;"><h2 class ="t1">Usuario</h2></td>
+                                <td style="width:250px; text-align:top;"><h2 class ="t1">Cliente</h2></td>
                                 <td style="width:250px; text-align:top;"><h2 class ="t1">Cantidad</h2></td>
                             </tr>
                                 <%
@@ -37,7 +42,7 @@
                                 <td ><p class="uno"><%= temp.getId_venta()%></p></td> 
                                 <td ><p class="uno"><%= temp.getId_detalle()%></p></td> 
                                 <td ><p class="uno"><%= temp.getProducto()%></p></td> 
-                                <td ><p class="uno"><%= temp.getUser()%></p></td> 
+                                <td ><p class="uno"><%= temp.getCliente()%></p></td> 
                                 <td ><p class="uno"><%= temp.getCantidad()%></p></td>
                             </tr>       
                                 

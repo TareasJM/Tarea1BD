@@ -246,7 +246,7 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
         }
         catch(Exception ev)
         {
-            sql="update clientes set nombre =? where rut=?";
+            sql="update clientes set nombrec =? where rut=?";
             try
             {
             Class.forName(classfor);
@@ -277,7 +277,7 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
             while(rs.next()){
                 cliente user = new cliente();
                 user.setRut(rs.getInt("rut"));
-                user.setNombre(rs.getString("nombre"));
+                user.setNombre(rs.getString("nombrec"));
                 vecPro.add(user);
             }
         }catch(Exception ex){

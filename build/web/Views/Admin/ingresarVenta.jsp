@@ -139,6 +139,11 @@
                 </SCRIPT>
 	</head>
 	<body>
+            <div id ="toolbar" style="position: fixed">
+                 <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+                 
+                 <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+             </div>
 		<div id="content">
 			<form style="text-align:center;" action="../../IV" method="POST" id="form">
 				Cliente: <select  class="cliente" name="cliente" id="cliente">

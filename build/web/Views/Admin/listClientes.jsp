@@ -14,6 +14,11 @@
 		<link href="../../Resources/css/listaproductos.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+            <div id ="toolbar" style="position: fixed">
+                 <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+                 
+                 <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+             </div>
 		<div id="content">
                     <form action ="editarProducto.jsp" with =" 10%" class="tabla1" border="1">
                         <p class="dos">Buscar</p>

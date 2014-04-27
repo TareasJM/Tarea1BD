@@ -21,6 +21,7 @@ body
 {
 	color: white;
 }
+
 .usuario
 {
 	margin-left: 13px;
@@ -28,6 +29,7 @@ body
         margin-right: -2px;
         border-radius: 8px;
         border-color: gray;
+        padding-left: 10px;
 }
 
 .pass
@@ -36,6 +38,7 @@ body
 	clear: fixed;	
         border-radius: 8px;
         border-color: gray;
+        padding-left: 10px;
 }
 a
 {
@@ -56,5 +59,8 @@ a:visited
   margin-top: 50px;
   margin-left: -240px;
   position: absolute;
+  border-radius: 8px;
+  background-color: white;
+  border-color: white;
   clear: fixed;
 }

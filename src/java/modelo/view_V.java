@@ -21,6 +21,7 @@ public class view_V {
     public int cantidad;
     public String producto;
     public String user;
+    public String cliente;
     public String rut;
 
     public int getId_detalle() {
@@ -37,6 +38,14 @@ public class view_V {
 
     public void setId_venta(int id_venta) {
         this.id_venta = id_venta;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     public String getProducto() {
@@ -100,6 +109,7 @@ public class view_V {
                 vc.setProducto(rs.getString("PRODUCTO"));
                 vc.setCantidad(rs.getInt("CANTIDAD"));
                 vc.setUser(rs.getString("NOMBRE"));
+                vc.setCliente(rs.getString("NOMBREC"));
                 vc.setRut(rs.getString("RUT"));
                 vecPro.add(vc);
                 }

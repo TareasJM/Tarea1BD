@@ -63,7 +63,7 @@ public class cliente
             while(rs.next()){
                 cliente user = new cliente();
                 user.setRut(rs.getInt("rut"));
-                user.setNombre(rs.getString("nombre"));
+                user.setNombre(rs.getString("nombrec"));
                 vecPro.add(user);
             }
         }catch(Exception ex){

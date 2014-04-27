@@ -10,11 +10,52 @@
 <html>
 	<head>
 		<link href="../../Resources/css/producto.css" rel="stylesheet" type="text/css">
+                <script type=""  src="http://code.jquery.com/jquery-latest.js"></script>
+                <SCRIPT type="text/javascript"  language="javascript">
+                 
+                    function doAjaxPost() {
+                        // get the form values
+                        
+                            if( ($('.cantidad').val() < 1 || $('.cantidad').val() > 9999999) && ($('.precio').val() < 1 || $('.precio').val() > 9999999 )){
+                            alert("Error: cantidad y precio de "+$('.nombre').val()+" no permitida");
+                            $('.cantidad').css("border", "solid 3px red");
+                            $('.precio').css("border", "solid 3px red");
+                            return;
+
+                            }
+                        
+                            else if($('.cantidad').val() < 1 || $('.cantidad').val() > 9999999 ){
+                            alert("Error: cantidad de "+$('.nombre').val()+" no permitida");
+                            $('.cantidad').css("border", "solid 3px red");
+                            return;
+
+                            }
+                            
+                            else if($('.precio').val() < 1 || $('.precio').val() > 9999999 ){
+                            alert("Error: precio de "+$('.nombre').val()+" no permitido");
+                            $('.precio').css("border", "solid 3px red");
+                            return;
+
+                            }
+          
+                        $.ajax({
+                            type: "POST",
+                            url: "../../addProducto",
+                            data: dataString,
+                            success: function(response){
+                                    alert(response);
+                                    window.location.href ="../index.jsp";
+                            },
+                            error: function(e){
+                                
+                            }
+                        });
+                    };
+                </SCRIPT>
 	</head>
 	<body>  
             <div id ="toolbar" style="position: fixed">
                  <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
-                 <div style="color:white" id="toolbarType">Cargo: <%=session.getAttribute("userType")%></div>
                  <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
              </div>
 		<div id="content">
@@ -27,10 +68,10 @@
 				<br />
 				Categoría: <input type="text" class = "categoria" name = "categoria" placeholder="Categoria" />
 				<br />
-				Cantidad: <input type="text" class = "cantidad" name="cantidad" placeholder="Cantidad">
+				Cantidad: <input type="text" class = "cantidad"  name="cantidad" placeholder="Cantidad">
 				<br />
 				Precio: <input type="text" class = "precio" name = "precio" placeholder="Precio" />
-				<input type="submit" class = "submits" value="Finalizar" />
+				<input type="button" class = "submits" onclick="doAjaxPost()" value="Finalizar" />
 			</form>
 		</div>
 	</body>

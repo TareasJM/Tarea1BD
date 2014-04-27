@@ -14,6 +14,11 @@
 		<link href="../../Resources/css/usuarios.css" rel="stylesheet" type="text/css">
 	</head>
 	<body >
+            <div id ="toolbar" style="position: fixed">
+                 <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+                 
+                 <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+             </div>
 		<div style="text-align:center;" id="content">
 			<form action="../../ingresarUsuario" method="post">
 				Rut: <input  type="text" class = "rut" name="rut" placeholder="Rut">
