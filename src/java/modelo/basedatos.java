@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 /**
  *
@@ -119,7 +119,6 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
                 id_detalle = rs.getInt("ID_DETALLE")+1;
             }
             sql="Insert into DCOMPRAS values(?,?,?,?,?)";//nombre de la table
-            JOptionPane.showMessageDialog(null,"sql "+id_detalle+" "+id_compra+" "+id_producto+" "+cantidad+" "+precio);
 
             Class.forName(classfor);
             con=DriverManager.getConnection(url, usuario, clave);
@@ -386,7 +385,6 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
             rs=pr.executeQuery();
             if (rs.next() == false)
             {
-                JOptionPane.showMessageDialog(null,"falseVenta");
                 id = 1;
             }
             else
@@ -414,7 +412,6 @@ public int insertDCompra(int id_compra, int id_producto, int cantidad, int preci
             con=DriverManager.getConnection(url, usuario, clave);
             pr=con.prepareStatement(sql);
             pr.executeUpdate();
-            JOptionPane.showMessageDialog(null,"UPDATE VENTAS");
             }
             catch(Exception e)
             {}

@@ -29,13 +29,11 @@
                   <script type=""  src="http://code.jquery.com/jquery-latest.js"></script>
                 <SCRIPT type="text/javascript"  language="javascript">
                     var i=2;
-                    
                     $(document).ready(function(){
                         if (<%=np%> == 1 ){
                             $( "#botonAdd" ).hide();
                         }
                     });
-                    
                     $(document).delegate(".producto", "change", function(){
                         var selected = new Array();
                         $(".producto").each(function(){
@@ -46,7 +44,9 @@
                             var option = $(this);
                             selected.forEach(function(select)
                             {
-                                option.find('option[value=' + select +']').hide();
+                                if (select !="value"){
+                                    option.find('option[value=' + select +']').hide();
+                                }
                             });
                         });
 
@@ -56,17 +56,68 @@
                         $('#form').append("Producto "+i+":");
                         $('#form').append($("#producto1").clone().attr("name","producto"+i).attr("id","producto"+i));
                         $('#form').append('<br />');
-                        $('#form').append('Cantidad: <input type="text" class = "cantidad" name="cantidad'+i+'" id="cantidad"/>');
+                        $('#form').append('Cantidad: <input type="text" class = "cantidad" name="cantidad'+i+'" id="cantidad'+i+'" placeholder="Cantidad"/>');
                         $('#form').append('<br />');
-                        $('#form').append('Precio: <input type="text" class = "precio" name="precio'+i+'" placeholder="Precio"/>');
+                        $('#form').append('Precio: <input type="text" class = "precio" name="precio'+i+'" id="precio'+i+'" placeholder="Precio"/>');
                         $('#form').append('<br />');
                         $('#form').append($('.submits'));
                         $('#np').attr("value", i);
-                        
+
                         i++;
                         if (i > <%=np%> ){
                             $( "#botonAdd" ).hide();
                         }
+                    };
+
+                    function doAjaxPost() {
+                        // get the form values
+                        var np = $('#np').val();
+                        var saltados = 0;
+                        var dataString = ""
+
+                        for(var j=1;j<=np;j++){
+
+                            if ($('#producto'+j).val()=="value"){
+                                saltados++;
+                                continue;
+                            }
+                            else if($('#cantidad'+j).val() < 1 || $('#cantidad'+j).val() > 9999999 ){
+                                alert("Error: cantidad de "+$('#producto'+j).val()+" no permitida");
+                                $('#cantidad'+j).css("border", "solid 3px red");
+                                return;
+
+                            }
+                            else if($('#precio'+j).val() < 1 || $('#precio'+j).val() > 9999999 ){
+                                alert("Error: precio de "+$('#producto'+j).val()+" no permitido");
+                                $('#precio'+j).css("border", "solid 3px red");
+                                return;
+
+                            }
+
+                            dataString = dataString + "producto"+(j-saltados)+"="+$('#producto'+j).val();
+                            dataString = dataString + "&cantidad"+(j-saltados)+"="+$('#cantidad'+j).val();
+                            dataString = dataString + "&precio"+(j-saltados)+"="+$('#precio'+j).val()+"&";
+                        }
+
+                        dataString+="np="+(np-saltados);
+
+                        $.ajax({
+                            type: "POST",
+                            url: "../../ingresarCompra",
+                            data: dataString,
+                            success: function(response){
+                                if(response.indexOf("Compra")>-1){
+                                    alert(response);
+                                    window.location.href ="../index.jsp";
+                                }else{
+                                    alert(response);
+                                    window.location.href ="../index.jsp";
+                                }
+                            },
+                            error: function(e){
+
+                            }
+                        });
                     };
                 </SCRIPT>
 	</head>
@@ -79,16 +130,16 @@
 			<form style="text-align:center;" id="form" action="../../ingresarCompra" method="post">
                                
 				Producto: <select  class = "producto" name ="producto1" id="producto1">
-                                            <option selected></option>
+                                            <option value="value" selected>Seleccione un producto</option>
                                             <%=htmlProductos%>
                                           </select>
 				<br />
-				Cantidad: <input type="text" class = "cantidad" name="cantidad1" placeholder="Cantidad" />
+				Cantidad: <input type="text" class = "cantidad" name="cantidad1" id="cantidad1" placeholder="Cantidad" />
 				<br />
-				Precio: <input type="text" class = "precio" name="precio1" placeholder="Precio"/>				
+				Precio: <input type="text" class = "precio" name="precio1" id="precio1" placeholder="Precio"/>
                                 <br />
                                 <input type="hidden" name ="np" value="1" id="np"/>
-				<input type="submit" class = "submits" value="Finalizar" />
+				<input type="button" class = "submits" onclick="doAjaxPost()" value="Finalizar" />
 			</form>
                         <button id="botonAdd"class="boton" onclick="add()">+Productos</button>
                     
