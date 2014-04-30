@@ -44,7 +44,7 @@
 <html>
 	<head>
 		<link href="../../Resources/css/venta.css" rel="stylesheet" type="text/css">
-                <script type=""  src="http://code.jquery.com/jquery-latest.js"></script>
+                <script type=""  src="../../Resources/jQuery/jquery-latest.js"></script>
                 <SCRIPT type="text/javascript"  language="javascript">
                     var i=2;
                     $(document).ready(function(){
@@ -140,9 +140,9 @@
 	</head>
 	<body>
             <div id ="toolbar" style="position: fixed">
-                 <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
-                 
-                 <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+     <div style="color:white; font-size: 13px;" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+         <div style="color:white; font-size: 13px;" id="toolbarType">Cargo: <%=session.getAttribute("userType")%></div>
+         <div id="toolbarLogout"><a style="color:white; font-size: 13px; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
              </div>
 		<div id="content">
 			<form style="text-align:center;" action="../../IV" method="POST" id="form">

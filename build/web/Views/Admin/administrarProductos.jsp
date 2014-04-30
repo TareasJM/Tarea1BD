@@ -14,8 +14,9 @@
 	</head>
 	<body>
             <div id ="toolbar" style="position: fixed">
-                 <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
-                 <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+                <div style="color:white; font-size: 13px;" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+         <div style="color:white; font-size: 13px;" id="toolbarType">Cargo: <%=session.getAttribute("userType")%></div>
+         <div id="toolbarLogout"><a style="color:white; font-size: 13px; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
              </div>
 		<div id="content">
                     <form action ="editarProducto.jsp" with =" 10%" class="tabla1" border="1">
@@ -31,7 +32,7 @@
                         </br>
                         <a href ="../index.jsp" sytle type ="text/css" class ="cuatro">Volver</a>
                     </form>
-                    <table width="89%" class="tabla2" border="1"> 
+                    <table width="87%" class="tabla2" border="1"> 
                             <tr>
                                 
                                 <td style="width:250px; text-align:top;"><h2 class ="t1">Código</h2></td> 

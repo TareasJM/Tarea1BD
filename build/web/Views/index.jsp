@@ -11,9 +11,9 @@
  <body > <% if(session.getAttribute("userName") != null)
          {%>
      <div id ="toolbar" style="position: fixed">
-         <div style="color:white" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
-         
-         <div id="toolbarLogout"><a style="color:white; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
+         <div style="color:white; font-size: 13px;" id="toolbarUser">Usuario: <%=session.getAttribute("userName")%></div>
+         <div style="color:white; font-size: 13px;" id="toolbarType">Cargo: <%=session.getAttribute("userType")%></div>
+         <div id="toolbarLogout"><a style="color:white; font-size: 13px; text-decoration: none" href="Session/login.jsp">Cerrar sesión</a> </div>
      </div>
          <%}%>
  	<div id="content">
