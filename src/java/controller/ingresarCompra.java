@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 import modelo.basedatos;
-import modelo.producto;
 
 /**
  *
@@ -33,6 +32,7 @@ public class ingresarCompra extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
         try {
 
             Calendar fecha = new GregorianCalendar();
@@ -65,8 +65,11 @@ public class ingresarCompra extends HttpServlet {
                 producto.insertDCompra(id_compra, id_producto, cantidad, precio);
             }
             
-            JOptionPane.showMessageDialog(null,"Datos Ingresados Con Éxito");
-            response.sendRedirect("Views/index.jsp");
+            String resumenVenta = "Compra realizada con exito.\n\nMonto total:\t\t\t$"+monto+"\n\n";
+            resumenVenta+="Fecha: "+dma+" Hora: "+hms;
+            out.println(resumenVenta);
+            out.close();
+            return;
             
             
         } finally 
